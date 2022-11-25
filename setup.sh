@@ -26,7 +26,7 @@ if [ $stdinput ]; then
 fi
 export SUBST_SERVICE_NAME SUBST_FRONTEND_HOST
 
-local_data_dir=/home/imbase/data
+local_data_dir=/home/grmsbase/data
 read -p " - Local Data Directory: [${local_data_dir}]: " stdinput
 if [ $stdinput ]; then
     local_data_dir=$stdinput
@@ -76,26 +76,26 @@ if [ $stdinput ]; then
 fi
 export SUBST_MAIL_FROM SUBST_SMTP_HOST SUBST_SMTP_PORT SUBST_DEFAULT_LANG
 SUBST_MYSQLDB_PATH=${local_data_dir}/mysqldb
-SUBST_MYSQLDB_ROOT_PASS=dearimbase
+SUBST_MYSQLDB_ROOT_PASS=deargrmsbase
 SUBST_MYSQLDB_DISCLOSE_HOST=localhost
 SUBST_MYSQLDB_DISCLOSE_PORT=3321
 SUBST_PHPMYADMIN_PATH=${local_data_dir}/phpmyadmin
 SUBST_PHPMYADMIN_DISCLOSE_PORT=8070
 SUBST_MONGODB_PATH=${local_data_dir}/mongodb
 SUBST_MONGODB_ROOT_USER=admin
-SUBST_MONGODB_ROOT_PASS=dearimbase
+SUBST_MONGODB_ROOT_PASS=deargrmsbase
 SUBST_MONGODB_DISCLOSE_PORT=27032
 SUBST_MONGOEXPRESS_DISCLOSE_PORT=8081
 SUBST_SQLDB_HOST=mysqldb
 SUBST_SQLDB_PORT=3306
 SUBST_SQLDB_NAME=${SUBST_SERVICE_NAME}
-SUBST_SQLDB_USER=imbase
-SUBST_SQLDB_PASS=helloimbase
+SUBST_SQLDB_USER=grmsbase
+SUBST_SQLDB_PASS=hellogrmsbase
 SUBST_MONGODB_HOST=mongodb
 SUBST_MONGODB_PORT=27017
 SUBST_MONGODB_NAME=${SUBST_SERVICE_NAME}
-SUBST_MONGODB_USER=imbase
-SUBST_MONGODB_PASS=helloimbase
+SUBST_MONGODB_USER=grmsbase
+SUBST_MONGODB_PASS=hellogrmsbase
 SUBST_DEV_FRONTEND_HOST=localhost
 SUBST_DEV_BACKEND_HOST=localhost
 SUBST_DEV_DB_HOST=localhost

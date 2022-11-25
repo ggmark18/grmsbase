@@ -1,5 +1,5 @@
 ## Welcome to the GRMSBase
-The GRMSBase is intended to use to develop a internal innovative system, which is a set of latest Open Source components.
+The GRMSBase is intended to use to develop a multi services web application, which is a set of latest Open Source components.
 
 * Angular 14
 * Bootstrap 5
@@ -22,14 +22,13 @@ which is for MySQL and MongoDB etc anywhere you like
 for example you home directory.
 And then input it at next setup.sh.
 ```
-    cd ~
-    mkdir grmsbase_data
+    mkdir -p /home/grmsbase/data
 ```
 
 ### initial base kit clone
 #### checking out the GRMSBase from git.
 ```
-    git clone git@bitbucket.org:imawaka/grmsbase.git #ProjectName#
+    git clone https://github.com/ggmark18/grmsbase.git #ProjectName#
 ```
 #### build submodule repository for each web application
 - Make 2 repositories for each server and client on git service. ( following case for memo )

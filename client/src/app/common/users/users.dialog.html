@@ -1,0 +1,40 @@
+<mat-dialog>
+  <h2 mat-dialog-title><i class="fa fa-pencil-alt"></i> User Editor</h2>
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <mat-dialog-content>
+
+      <mat-form-field>
+        <input matInput i18n-placeholder placeholder="UserID" name="userid" formControlName="userid" required>
+        <mat-error *ngIf="userid.invalid">{{userid.getError("message")}}</mat-error>
+      </mat-form-field>
+      
+      <mat-form-field>
+        <input matInput i18n-placeholder placeholder="Name" name="name" formControlName="name" required>
+      </mat-form-field>
+      
+      <mat-form-field>
+        <input matInput i18n-placeholder placeholder="Email Address" name="email" type="email" formControlName="email" required>
+        <mat-error *ngIf="email.invalid">{{email.getError("message")}}</mat-error>
+      </mat-form-field>
+      
+      <mat-form-field>
+        <mat-select i18n-placeholder placeholder="Role" name="role" formControlName="role" required>
+          <mat-option *ngFor="let role of roleCandidate" [value]="role.value">
+            {{ role.display }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+    </mat-dialog-content>
+    <mat-dialog-actions>
+      <div class="w-100">
+        <button type="submit" [disabled]="!userForm.valid" class="btn btn-save btn-sm" ></button>
+        <button mat-dialog-close class="btn btn-cancel btn-sm"></button>
+      </div>
+    </mat-dialog-actions>
+    <div class="alert alert-danger alert-dismissible" *ngIf="error">
+      <button type="button" class="close" (click)="error=null;" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      {{error}}
+    </div>
+  </form>
+</mat-dialog>

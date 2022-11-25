@@ -1,0 +1,16 @@
+.DS_Store
+.env
+*~
+.#*
+\#*\#
+package-lock.json
+node_modules
+documentation
+migration
+log
+uploads
+.tmp
+.sass-cache
+*.swp
+dist
+client/.angluar

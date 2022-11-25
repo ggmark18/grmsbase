@@ -1,0 +1,12 @@
+<mat-dialog>
+  <h3 mat-dialog-title>予期せぬエラー</h3>
+  <mat-dialog-content>
+    <div [innerHTML]="message" class="error-message"></div>
+    <div class="card-block center-block text-cente">
+      <img width="300" src="/assets/images/sorry.png">
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions  style="justify-content:center"><!-- 中央 center -->
+    <button [mat-dialog-close]="'ok'">OK</button>
+  </mat-dialog-actions>
+</mat-dialog>

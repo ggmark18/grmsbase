@@ -1,0 +1,9 @@
+export default () => {
+    return {
+       document: {
+            title: 'GRMSBase API',
+            description: 'The API description',
+            version: '1.0'
+        }
+    };
+}

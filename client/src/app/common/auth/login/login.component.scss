@@ -1,0 +1,152 @@
+.login {
+    margin: 40px auto;
+    width: 400px;
+    h1 {
+	    margin-top: 20px;
+	    font-size: 36px;
+	    font-weight: 500;
+    }
+    input {
+        margin-bottom: 25px;
+    }
+}
+
+.login .form-top {
+    overflow: hidden;
+    padding: 0 25px 5px 30px;
+    background: #efefef;
+    -moz-border-radius: 4px 4px 0 0;
+    -webkit-border-radius: 4px 4px 0 0;
+    border-radius: 4px 4px 0 0;
+    text-align: left;
+    img {
+	    height: 25px;
+	}
+}
+.login .form-body {
+    background: #fafafa;
+    padding: 20px 15px 15px 20px;
+}
+
+.login .form-bottom {
+    overflow: hidden;
+    padding: 25px 15px 5px 25px;
+    background: #efefef;
+    -moz-border-radius: 0 0 4px 4px; -webkit-border-radius: 0 0 4px 4px; border-radius: 0 0 4px 4px;
+}
+
+.login .form-top-left {
+    float: left;
+    padding-top: 5px;
+    width: 75%;
+    img {
+        float: left;
+    }
+    .title {
+        padding: 2px 3px 0 0;
+        float: left;
+    }
+}
+
+.login .form-top-right {
+	float: left;
+	width: 25%;
+	padding-top: 5px;
+    font-size: 66px;
+	color: #222;
+	line-height: 80px;
+	text-align: right;
+	opacity: 0.4;
+}
+
+.btn-register {
+	background-color: #66b04d;
+	border-color: #398d1d;
+	color: #fefefe;
+}
+
+.form-body {
+    padding-top: 40px !important;
+}
+
+.form-group {
+    height: 75px;
+    padding: 0 20px;
+}
+
+.btn-register:hover {
+	background-color: #398d1d;
+	border-color: #398d1d;
+	color: #fff;
+}
+
+.password-reset-help {
+    float: right;
+    margin-top: 10px;
+    button {
+	font-size: 14px;
+    }
+}
+
+.password-reset-request {
+    width: 400px;
+    font-size: 16px;
+    text-align: left;
+    padding: 10px;
+}
+
+.form-group {
+    margin-bottom: 0px;
+}
+
+.field-error {
+    margin-top: -20px;
+    padding-left:10px;
+    font-size: 9pt;
+    color: red;
+}
+
+.btn-outline-secondary {
+    background-color: white;
+    margin-left: 10px;
+}
+
+.btn-outline-secondary:hover {
+    background-color: gray;
+    color: white;
+}
+
+.btn-outline-secondary:hover:disabled {
+    background-color: white;
+    color: gray;
+}
+
+.close {
+    float: right;
+    margin-top: -40px;
+    width: 30px;
+}
+.password-show {
+    margin-left: 0;
+    height: 37px;
+    border-color: #ced4da;
+}
+
+.btn-login, .btn-maillogin {
+    background-color: #fff;
+    color: #007bcc;
+    border:solid 1px #007bcc;
+}
+.btn-login:hover, .btn-maillogin:hover {
+    background-color: #007bcc;
+    color: #fff !important;
+    border: solid 1px #007bcc;
+}
+.btn-login:disabled, .btn-maillogin:disabled {
+    background-color: #ccc;
+}
+
+
+
+
+

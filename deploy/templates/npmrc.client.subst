@@ -1,0 +1,1 @@
+start_host=${SUBST_DEV_FRONTEND_HOST}

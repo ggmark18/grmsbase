@@ -1,0 +1,130 @@
+version: '3'
+
+services:
+  grms-frontend:
+    container_name: imbase_frontend
+    build:
+      context: ../
+      dockerfile: deploy/dockerfile/Dockerfile.client
+    ports:
+      - ${FRONTEND_DISCLOSE_PORT}:80
+    environment:
+      - FRONTEND_PORT=${FRONTEND_DISCLOSE_PORT}
+      - BACKEND_HOST=imb-backend
+      - BACKEND_PORT=${GRMS_BACKEND_PORT}
+    command: /bin/sh -c "envsubst '$$BACKEND_HOST$$BACKEND_PORT$$FRONTEND_PORT' < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf && exec nginx -g 'daemon off;'"
+    links:
+      - imb-backend
+# If you make your blog, comment this out.
+#    volumes:
+#      - ${GRMS_BLOG_PATH}:/var/www/blog
+        
+  grms-backend:
+    container_name: imbase_backend        
+    build:
+      context: ../
+      dockerfile: deploy/dockerfile/Dockerfile.server
+      args:
+        - https_proxy=${HTTP_PROXY}
+        - http_proxy=${HTTP_PROXY}
+    environment:
+      - NODE_ENV=production
+      - JWT_SECRET
+      - HTTP_PROXY
+      - GRMS_SERVICE_NAME
+      - GRMS_BACKEND_PORT
+      - GRMS_HOST_URL
+      - GRMS_PASSWORD_DURATION_DAYS
+      - GRMS_AUTOLOGIN_SEC
+      - GRMS_SQLDB_HOST
+      - GRMS_SQLDB_PORT='3306'
+      - GRMS_SQLDB_NAME
+      - GRMS_SQLDB_USER
+      - GRMS_SQLDB_PASS
+      - GRMS_MONGODB_HOST
+      - GRMS_MONGODB_PORT='27017'
+      - GRMS_MONGODB_NAME
+      - GRMS_MONGODB_USER
+      - GRMS_MONGODB_PASS
+      - GRMS_MAIL_METHOD
+      - GRMS_MAIL_FROM
+      - GRMS_SMTP_HOST
+      - GRMS_SMTP_PORT
+      - GRMS_SMTP_USER
+      - GRMS_SMTP_PASS
+      - GRMS_DATA_DIR=/data/filedata
+      - GRMS_PUPPETTER_SANDBOX=true
+      - GRMS_PUPPETTER_EXECUTABLEPATH
+    extra_hosts:
+      - smtp_host:${SMTP_HOST_IP}
+    volumes:
+      - ${GRMS_DATA_DIR}:/data/filedata
+    links:
+      - mongodb
+      - mysqldb
+
+  phpmyadmin:
+    container_name: imbase_phpmyadmin    
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOST=mysqldb
+    links:
+      - mysqldb
+    ports:
+      - ${PHPMYADMIN_DISCLOSE_PORT}:80
+    volumes:
+      - ./dockerfile/phpmyadmin-misc.ini:/usr/local/etc/php/conf.d/phpmyadmin-misc.ini
+      - ${PHPMYADMIN_PATH}:/sessions
+
+  mongo-express:
+    image: mongo-express
+    restart: always
+    ports:
+      - ${MONGOEXPRESS_DISCLOSE_PORT}:8081
+    links:
+      - mongodb
+    environment:
+      - ME_CONFIG_MONGODB_SERVER=${GRMS_MONGODB_HOST}
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=${MONGO_INITDB_ROOT_USERNAME}
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
+
+  mongodb:
+    container_name: imbase_mongodb    
+    build:
+      context: .
+      dockerfile: dockerfile/Dockerfile.mongodb
+    restart: always
+    ports:
+      - ${MONGODB_DISCLOSE_PORT}:27017
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME
+      - MONGO_INITDB_ROOT_PASSWORD
+      - MONGO_INITDB_DATABASE=${GRMS_MONGODB_NAME}
+      - MONGO_DB_USER=${GRMS_MONGODB_USER}
+      - MONGO_DB_PASS=${GRMS_MONGODB_PASS}
+    volumes:
+      - ${MONGODB_PATH}:/data/db
+      - ${GRMS_BACKUPDIR}:/backup
+
+  mysqldb:
+    container_name: imbase_mysqldb
+    build:
+      context: .
+      dockerfile: dockerfile/Dockerfile.mysqldb
+    command: --default-authentication-plugin=mysql_native_password
+    #platform: linux/x87_64 # for M1 Mac 2022-1
+    restart: always
+    ports:
+      - ${MYSQLDB_DISCLOSE_PORT}:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD
+      - MYSQL_DATABASE=${GRMS_SQLDB_NAME}
+      - MYSQL_USER=${GRMS_SQLDB_USER}
+      - MYSQL_PASSWORD=${GRMS_SQLDB_PASS}
+      - GRMS_SQLDB_HOST
+      - GRMS_MAIL_FROM
+    volumes:
+      - ${MYSQLDB_PATH}:/var/lib/mysql
+

@@ -1,0 +1,39 @@
+$theme-colors: (
+    primary: #007bcc,
+    success: #5cb85c,
+    info:    #5bc9de,
+    warning: #f0ad4e,
+    danger:  #d9534f
+);
+
+$im-new: (
+    color: #007bbb, 
+    icon: '\f067',  /* fas fa-plus */
+);
+$im-edit: (
+    color: #5db85c, 
+    icon: '\f303'   
+);
+$im-save: (
+    icon: '\f0c7',  /* fas fa-save */
+);
+
+$im-ok: (
+    icon: '\f164',  /* fas fa-thumbs-up */
+);
+$im-cancel: (
+    color: #f08300, 
+    icon: '\f05e'   
+);
+$im-delete: (
+    color: #d75f5f, 
+    icon: '\f2ed'   
+);
+
+$im-do: (
+    color: #b44c97, 
+);
+
+@mixin fontawesome($icon) {
+    font-family: "Font Awesome 5 Free"; font-weight: 900; content: $icon; 
+}

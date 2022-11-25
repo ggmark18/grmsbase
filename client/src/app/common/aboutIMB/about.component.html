@@ -1,0 +1,57 @@
+<header class="banner-unit" id="banner">
+  <div class="container top">
+    <div class="row">
+      <div class="col detail-explain">
+        <div class="pl-5">
+          <H4 class="ml-4">Best Practices</H4>
+          <ul>
+            <li>Angular RxJS ( avoid anti-pattern )</li>
+            <li>Uniformed Error Handling </li>
+            <li>DTO sharing between frontend and backend</li>
+            <li>Reactive forms</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col">
+        <img src="assets/images/angular-nestjs.png" alt="Angular & NestJS" height="300">
+      </div>
+      <div class="col detail-explain">
+        <ul>
+          <li>Auth ( Passport, Simple Mail Login )
+          <li>Multi Database ( MYSQL and MongoDB )</li>
+          <li>Web Socket</li>
+          <li>i18n multi Languages</li>
+          <li>Package module management</li>
+          <li>Quill Editor ( Memo sample package )</li>
+        </ul>
+      </div>
+    </div>
+    <h1>Fai da te</h1>
+    <p class="lead"><span style="color:#e75656;">I</span>nternal <span style="color:#e75656;">M</span>anufacturing Base</p>
+  </div>
+</header>
+<div class="container">
+  <div class="row row-cols-3 mt-2">
+    <div class="col" *ngFor="let stack of stacks">
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-4">
+              <a [href]="stack.link"><img [src]="stack.logo" class="stack-logo" target="_blank"/></a>
+            </div>
+            <div class="col-6 stack-title">
+              <div>
+                <h4 class="card-title w-100 pl-3">{{stack.name}}</h4>
+                <h6 class="card-subtitle pl-3">{{stack.version}}</h6>
+              </div>
+            </div>
+          </div>
+          <p class="card-text">{{stack.explain}}</p>
+          <a [href]="stack.doc" class="btn btn-outline-secondary" target="_blank">Document</a>
+          <a *ngIf="stack.reference" [href]="stack.reference" class="btn btn-outline-secondary float-right" target="_blank">Reference</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

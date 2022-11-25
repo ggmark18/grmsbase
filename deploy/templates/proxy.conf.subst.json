@@ -1,0 +1,10 @@
+{
+    "/api": {
+        "target": "http://${SUBST_DEV_FRONTEND_HOST}:${SUBST_DEV_BACKEND_PORT}",
+        "secure": false
+    },
+    "/ja": {
+        "target": "http://${SUBST_DEV_FRONTEND_HOST}:4300",
+        "secure": false
+    }
+}

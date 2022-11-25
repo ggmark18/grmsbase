@@ -1,0 +1,33 @@
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+
+import { AuthGuardLogin } from '../common/auth/auth-guard-login.service';
+import { AuthGuardAdmin } from '../common/auth/auth-guard-admin.service';
+import { AboutComponent } from '../common/aboutIMB/about.component';
+import { LoginComponent } from '../common/auth/login/login.component';
+import { LogoutComponent } from '../common/auth/login/logout.component';
+import { PasswordComponent } from '../common/auth/login/password.component';
+import { UsersComponent } from '../common/users/users.component';
+import { AppSharedModule } from '../app.share';
+
+import { AppHomeComponent } from './app-home.component';
+
+const routes: Routes = [
+    { path: '', component: AppHomeComponent },
+    { path: 'about', component: AboutComponent },
+    { path: 'login', component: LoginComponent },
+    { path: 'logout', component: LogoutComponent, canActivate: [AuthGuardLogin] },
+    { path: 'password', component: PasswordComponent, canActivate: [AuthGuardLogin] },
+    { path: 'users', component: UsersComponent, canActivate: [AuthGuardAdmin]}
+];
+
+@NgModule({
+    imports: [
+        RouterModule.forRoot(routes),  
+        AppSharedModule,               
+    ],
+     exports: [RouterModule],    
+    providers: [ AuthGuardLogin, AuthGuardAdmin ]
+
+})
+export class AppModules { }

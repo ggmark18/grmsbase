@@ -1,0 +1,371 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~quill/dist/quill.core.css";
+@import "~quill/dist/quill.snow.css";
+@import './assets/theme/im-angular-material';
+@import './assets/theme/im-color-palette';
+@import "~@fortawesome/fontawesome-free/css/fontawesome.css";
+@import "~@fortawesome/fontawesome-free/css/solid.css";
+@import "~@fortawesome/fontawesome-free/css/regular.css";
+@import "~@fortawesome/fontawesome-free/css/brands.css";
+
+body {
+  background-color: white;
+  margin: 0;
+  font-family: 'Helvetica Neue', sans-serif;
+  font-size: 15px;
+  app-root * {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+}
+
+/* Page Design */
+.container.page {
+    height: 100%;
+    width: 100%;
+    H2 {
+        margin-bottom: 0px;
+        min-height: 50px;
+        mat-icon {
+            float: left;
+            line-height: 41px;
+            font-size: 25pt;
+            margin-right: 15px;
+        }
+        color: #555;
+        .mode-button {
+            float: right;
+            margin: 0 0 5px 0;
+        }
+    }
+    HR {
+        margin-top: 0px;
+        border-top-color: #d9d9d9;
+    }
+}
+@media (min-width: 992px) {
+    .container.page {
+        padding:50px;
+    }
+}
+@media (max-width: 991.95px) {
+    .container.page {
+        padding:10px;
+    }
+}
+
+
+.form-control {
+  font-family: 'Helvetica Neue', sans-serif;
+  font-size: 15px;
+}
+
+.table th,
+.table td {
+    padding: 0.40rem 0.75rem;
+}
+
+/* Dialog common */
+.mat-dialog-title {
+    margin-right: 20px;
+}
+.btn-close {
+    color: #555;
+    float: right;
+    margin: -20px -20px 0 0;
+    padding: 0 5px 0 0;
+}
+.btn-save {
+    float:right;
+    margin-right: 23px;
+    color: map-get($im-edit, 'color') !important;
+    border:solid 1px map-get($im-edit, 'color');
+}
+.btn-save:hover {
+    background-color: map-get($im-edit, 'color');
+    color: #fff !important;
+    border: solid 1px map-get($im-edit, 'color');
+}
+.btn-save:disabled {
+    color: #aaa !important;
+    border: solid 1px #aaa
+}
+.btn-save:disabled:hover {
+    color: #aaa !important;
+    background-color: #eee !important;
+    border: solid 1px #aaa
+}
+.btn-save::before {
+    @include fontawesome(map-get($im-save, 'icon'))
+}
+.btn-save::after {
+    content: " Save";
+}
+
+.btn-ok {
+    float:right;
+    margin-right: 23px;
+    background-color: map-get($im-edit, 'color');
+}
+.btn-ok:hover {
+    background-color: map-get($im-edit, 'hover');
+}
+.btn-ok:disabled {
+    background-color: #DDD;
+}
+.btn-ok::before {
+    @include fontawesome(map-get($im-ok, 'icon'))
+}
+.btn-ok::after {
+    content: " OK";
+}
+
+.btn-cancel {
+    float:right;
+    margin-right: 10px;
+    color: map-get($im-cancel, 'color') !important;
+    border:solid 1px map-get($im-cancel, 'color');
+}
+.btn-cancel:hover {
+    background-color: map-get($im-cancel, 'color');
+    color: #fff !important;
+    border: solid 1px map-get($im-cancel, 'color');
+}
+.btn-cancel::before {
+    @include fontawesome(map-get($im-cancel, 'icon'))
+}
+.btn-cancel::after {
+    content: " Cancel";
+}
+
+.btn-edit, .btn-edit-xs {
+    float:right;
+    margin-right: 10px;
+    color: map-get($im-edit, 'color') !important;
+    border:solid 1px map-get($im-edit, 'color');
+}
+
+.btn-edit-xs {
+    height: 1.2rem;
+    width: 1.2rem;
+    line-height: 0.8rem;
+}
+
+.btn-edit:hover, .btn-edit-xs:hover {
+    background-color: map-get($im-edit, 'color');
+    color: #fff !important;
+    border: solid 1px map-get($im-edit, 'color');
+}
+.btn-edit::before {
+    @include fontawesome(map-get($im-edit, 'icon'))
+}
+.btn-edit-xs::before {
+    font-size: x-small;
+    @include fontawesome(map-get($im-edit, 'icon'))
+}
+
+.btn-delete {
+    float:right;
+    margin-right: 10px;
+    color: map-get($im-delete, 'color') !important;
+    border:solid 1px map-get($im-delete, 'color');
+}
+.btn-delete:hover {
+    background-color: map-get($im-delete, 'color');
+    color: #fff !important;
+    border: solid 1px map-get($im-delete, 'color');
+}
+.btn-delete::before {
+    @include fontawesome(map-get($im-delete, 'icon'))
+}
+.btn-delete::after {
+    content: " Delete";
+}
+
+.btn-erase {
+    float:right;
+    margin-right: 10px;
+    background-color: map-get($im-delete, 'color');
+}
+.btn-erase:hover {
+    background-color: map-get($im-delete, 'hover')
+}
+.btn-erase::before {
+    @include fontawesome("\f12d")
+}
+.btn-erase::after {
+    content: "";
+}
+.btn-minus {
+    float:right;
+    margin-right: 10px;
+    background-color: map-get($im-delete, 'color');
+}
+.btn-minus:hover {
+    background-color: map-get($im-delete, 'hover')
+}
+.btn-minus::before {
+    @include fontawesome("\f146")
+}
+.btn-minus::after {
+    content: "";
+}
+.fa-trash-alt {
+    color: map-get($im-delete, 'color');
+}
+
+.fa-pencil-alt {
+    color: map-get($im-edit, 'color');
+}
+
+.btn-default {
+    border: 1px lightgray solid;
+}
+
+.btn-new, .btn-send {
+    color: map-get($im-new, 'color') !important;
+    border:solid 1px map-get($im-new, 'color');
+}
+.btn-new:hover, .btn-send:hover {
+    background-color: map-get($im-new, 'color');
+    color: #fff !important;
+    border: solid 1px map-get($im-new, 'color');
+}
+.btn-new:disabled, .btn-send:disabled {
+    color: #aaa !important;
+    background-color: #eee !important;
+    border: solid 1px #aaa
+}
+.btn-new:disabled:hover {
+    color: #aaa !important;
+    background-color: #eee !important;
+    border: solid 1px #aaa
+}
+.btn-new::before {
+    @include fontawesome(map-get($im-new, 'icon'))
+}
+.btn-new::after {
+    content: " New";
+}
+
+
+// Dialog Default Style
+.mat-dialog-container {
+    padding: 1px !important;
+    .modal-header {
+	.modal-title {
+	    margin: 0;
+	}
+	background-color: rgba(0,0,0,0.03);
+	button {
+	    margin: -8px -8px 0 15px;
+	    i {
+		color: gray;
+		font-size: 18px;
+	    }
+	}
+    }
+    .dialog-body {
+
+    }
+    .modal-footer {
+	background-color: rgba(0,0,0,0.03);
+	button{
+	    color: white;
+	}
+	.alert {
+	    float: left;
+	    margin-bottom: 0px;	
+	    padding: 6px 10px 6px 20px;
+	}
+    }
+}
+
+.mat-dialog-content {
+    margin: 0 !important;
+}
+.dialog-footer-button {
+    padding-left: 20px;
+}
+
+
+// Input-field for bootstrap
+.input-group-text {
+   font-family: 'Helvetica Neue', sans-serif;
+    font-size: 15px;
+}
+
+.table-card.mat-header-row{
+    border-top: solid 0.8px #ddd;
+    background-color: rgba(0, 0, 0, 0.05);
+    min-height: 30px;
+}
+.table-card.mat-paginator {
+    background-color: rgba(0, 0, 0, 0.03);
+}
+
+.mat-dialog-title {
+    margin: 0 0 10px 0 !important;
+    padding: 24px 24px 20px 24px;
+    border-bottom: solid 0.8px #ddd;
+    background-color: rgba(0, 0, 0, 0.05);
+}
+.mat-dialog-actions {
+    padding: 0 24px 24px 24px;
+    border-top: solid 0.8px #ddd;
+    background-color: rgba(0, 0, 0, 0.05);
+    margin-bottom: 0 !important;
+}
+
+.footer-paginator {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  .mat-paginator-range-label {
+      margin: 0px 0px 0px 10px;
+  }
+  .mat-form-field {
+      width:45px;
+  }
+}
+
+.right-fix-panel {
+    .mat-expansion-panel-body {
+        padding-right: 0px !important;
+    }
+}
+
+.custom-menu-icon {
+    width: 16px;
+    height: 16px;
+    margin-bottom: -3px;
+    margin-bottom: -3px;
+    display: inline-block;
+    background: no-repeat center/100%;
+}
+.custom-label-icon {
+    width: 20px;
+    height: 20px;
+    display: block;
+    background: no-repeat center/100%;
+}
+.talknote {
+    background-image: url('./assets/images/talknote.png');
+}
+
+.multiline-tooltip {
+    white-space: pre-line;
+}
+
+.home-link {
+    margin-top: 10px;
+    a:link, a:visited, a:active { color: #999;}
+    a:hover { color: skyblue;
+              text-decoration: none;
+    }
+
+}
+
+
+

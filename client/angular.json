@@ -1,0 +1,211 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "IMBase": {
+      "root": "",
+      "sourceRoot": "src",
+      "projectType": "application",
+      "i18n": {
+        "sourceLocale": "en-US",
+        "locales": {
+          "en": {
+            "translation": "src/locale/messages.en.xlf",
+          },
+          "ja": {
+            "translation": "src/locale/messages.ja.xlf",
+          }
+        }
+      },
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "localize": false,
+            "aot": true,
+            "outputPath": "dist",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "tsConfig": "src/tsconfig.app.json",
+            "polyfills": "src/polyfills.ts",
+            "assets": [
+                "src/assets",
+                "src/app/app-modules/assets",
+                "src/favicon.ico"
+            ],
+            "styles": [
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+                "./node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
+                "./node_modules/@fortawesome/fontawesome-free/css/all.css",
+              "src/assets/theme/bootstrap.min.css",
+              "src/styles.scss"
+            ],
+              "scripts": [
+                  "./node_modules/@fortawesome/fontawesome-free/js/all.js",
+              "src/assets/javascripts/jquery.min.js",
+              "src/assets/javascripts/bootstrap.min.js",
+              "src/assets/javascripts/popper.min.js",
+              "src/assets/javascripts/Chart.js"
+            ],
+            "allowedCommonJsDependencies": [
+              "lodash",
+              "crypto-js",
+              "jwt-decode",
+              "socket.io-client",
+              "chart.js"
+            ]
+          },
+          "configurations": {
+              "production": {
+              "localize": ["ja","en"],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ]
+            },
+            "dev-ja": {
+              "localize": [ "ja" ],
+              "baseHref": "/ja/",
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.dev.ts"
+                }
+              ]
+            },
+            "dev-en": {
+              "localize": ["en"],
+              "baseHref": "/en/",
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.dev.ts"
+                }
+              ]
+            },
+            "dev": {
+              "localize": ["ja"],
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.dev.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+              "browserTarget": "IMBase:build",
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "IMBase:build:production"
+            },
+            "ja": {
+              "browserTarget": "IMBase:build:ja"
+            },
+            "dev": {
+              "browserTarget": "IMBase:build:dev",
+            },
+            "dev-en": {
+              "browserTarget": "IMBase:build:dev-en",
+            },
+            "dev-ja": {
+              "browserTarget": "IMBase:build:dev-ja",
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "IMBase:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "src/test.ts",
+            "karmaConfig": "./karma.conf.js",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "src/tsconfig.spec.json",
+              "scripts":[
+              "./node_modules/@fortawesome/fontawesome-free/js/all.js",
+              ],
+            "styles": [
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+                "./node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
+                "./node_modules/@fortawesome/fontawesome-free/css/all.css",
+              "src/styles.scss"
+            ],
+            "assets": [
+              "src/assets",
+              "src/favicon.ico"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "src/tsconfig.app.json",
+              "src/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "IMBase-e2e": {
+      "root": "",
+      "sourceRoot": "",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "./protractor.conf.js",
+            "devServerTarget": "IMBase:serve"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "e2e/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "schematics": {
+    "@schematics/angular:component": {
+      "prefix": "app",
+      "styleext": "scss"
+    },
+    "@schematics/angular:directive": {
+      "prefix": "app"
+    }
+  },
+  "cli": {
+    "analytics": "e82a950d-f115-4802-9067-5482aa6e8971"
+  }
+}

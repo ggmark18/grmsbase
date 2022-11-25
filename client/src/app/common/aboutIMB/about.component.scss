@@ -1,0 +1,35 @@
+.container.top {
+    max-width: 100%;
+    margin:0px;
+    .col {
+        padding: 0px;
+    }
+}
+
+.detail-explain {
+    margin-top: 100px;
+    text-align: left;
+}
+
+.stack-title {
+    display: flex; 
+    justify-content: left;
+    align-items: center; 
+}
+.stack-logo {
+    max-height: 100px;
+    max-width: 100px;
+}
+.card {
+    margin-top: 20px;
+}
+
+.banner-unit {
+    position: relative;
+    padding: 30px 15px;
+    color: #F5F5F5;
+    text-align: center;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+    background: #4393B9;
+}
+

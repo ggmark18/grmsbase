@@ -1,0 +1,24 @@
+# Angular build
+FROM node:14 as build-stage
+#If you need, setting proxy 
+#RUN npm config -g set https-proxy http://proxy.yourcompany.com:8000
+#RUN npm config -g set http-proxy http://proxy.yourcompany.com:8000
+#RUN npm config -g set proxy http://proxy.yourcompany.com:8000
+WORKDIR /usr/src/app
+COPY ["./client/package.json", "./client/angular.json", "./"]
+RUN npm install
+COPY ["./client/src", "./src"]
+RUN npm run build
+
+# ngix
+FROM nginx:alpine
+#If you need, setting proxy
+RUN rm -rf /usr/share/nginx/html/*
+COPY --from=build-stage /usr/src/app/dist  /usr/share/nginx/html
+COPY ./deploy/nginx/default.conf.template /etc/nginx/conf.d
+COPY ./deploy/nginx/index.html /usr/share/nginx/html
+
+# add for my blog
+#RUN mkdir /usr/share/nginx/blog
+
+CMD ["nginx", "-g", "daemon off;"]

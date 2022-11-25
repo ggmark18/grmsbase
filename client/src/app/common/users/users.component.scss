@@ -1,0 +1,61 @@
+@import '../../../assets/theme/im-color-palette';
+
+H3 {
+    color: #777;
+    margin-top: 30px;
+}
+
+.table-card {
+    width: 900px;
+}
+
+.card-header {
+    padding: 0 10px;
+}
+.header-search {
+    margin-top: 10px !important;
+}
+.header-text {
+    position:absolute;
+    color: #777;
+    display: table-cell;
+    left: 10px;
+    bottom: 0px;
+}
+
+.btn-delete::after {
+    content: "";
+}
+
+.mat-form-field {
+    padding: 0 20px;
+    margin-top: 10px;
+    font-size: 14px;
+    width: 100%;
+}
+table {
+    width: 100%;
+    .mat-header-row {
+	height: 30px;
+    }
+}
+th {
+    border: none;
+    border-bottom: 1px lightgray solid;
+}
+
+.mat-column-userid {
+    width: 100px;
+}
+
+.mat-column-email {
+    width: 350px;
+}
+.mat-column-role {
+    width: 80px;
+}
+
+.submenu-item {
+    padding: 10px;
+    height: 50px;
+}

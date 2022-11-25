@@ -1,0 +1,42 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light" *ngIf="headerConfig$ | async as header">
+  <a [routerLink]="[header?.homeRoot]" class="logo">
+    <img [src]="header?.logo" />&nbsp;{{title.getTitle()}}
+  </a>
+  <div class="collapse navbar-collapse" id="navbarText" *ngIf="header?.user" >
+    <ul class="navbar-nav mr-auto">
+      <li *ngFor="let pmenu of header?.menus" class="nav-item" >
+        <a class="nav-link" [routerLink]="[pmenu.route]" *ngIf="pmenu.check(header?.user)">
+          <span *ngIf="pmenu.icon"><i [class]="pmenu.icon"></i></span>&nbsp;{{pmenu.title}}
+        </a>
+      </li>
+    </ul>
+      
+    <ul class="nav navbar-nav navbar-right">
+      <li *ngFor="let amenu of header?.adminMenus" class="nav-item" >
+        <a class="nav-link" [routerLink]="[amenu.route]" *ngIf="amenu.check(header?.user)">
+          <span *ngIf="amenu.icon"><i [class]="amenu.icon"></i></span>&nbsp;{{amenu.title}}
+        </a>
+      </li>
+      <li class="nav-item" *ngIf="!header?.user"><a class="nav-link" [routerLink]="['/login']">
+          Login&nbsp;<i class="fas fa-sign-in-alt"></i></a></li>
+      <li class="nav-item" *ngIf="header?.user" dropdown >
+        <button id="button-basic" dropdownToggle type="button" class="btn pb-0 pt-1"
+                aria-controls="basic-link">
+          <span class="nav-link py-0">{{userName(header?.user)}} <i class="fas fa-cog"></i></span>
+        </button>
+        <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu dropdown-menu-right"
+            role="menu" aria-labelledby="basic-link">
+	      <li role="menuitem"><a class="dropdown-item"  href="#" [routerLink]="[header?.changePasswordURL]" >
+              <i class="fas fa-key"></i>&nbsp;&nbsp;{{passwordSubMenu}}</a></li>
+	      <li role="menuitem"><a class="dropdown-item"  href="#" [routerLink]="[smenu.route]" *ngFor="let smenu of header?.settingMenus">
+              <i [class]="smenu.icon"></i>&nbsp;&nbsp;{{smenu.title}}</a></li>
+          <li class="divider dropdown-divider"></li>
+          <li role="menuitem"><a class="dropdown-item pl-5"  href="#" [routerLink]="[header?.logoutURL]">
+            Logout&nbsp;&nbsp;&nbsp;<i class="fas fa-sign-out-alt"></i></a></li>
+	    </ul>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+

@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en-US" datatype="plaintext" original="ng2.template" target-language="en">
+    <body>
+      <trans-unit id="64067e1999bba00da6e5fdd3adab666795b546ad" datatype="html">
+        <source>Organization Management</source><target state="new">Organization Management</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app-modules/organization/organization.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit><trans-unit id="2634480406937409114" datatype="html">
+        <source>Confirm to Delete Organization</source><target state="new">Confirm to Delete Organization</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app-modules/organization/organization.component.ts</context>
+          <context context-type="linenumber">71</context>
+        </context-group>
+      </trans-unit><trans-unit id="4466434183091514737" datatype="html">
+        <source>Hello! </source><target state="new">Hello! </target>
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/common/headerfooter/header.component.ts</context><context context-type="linenumber">60</context></context-group></trans-unit><trans-unit id="2194421213635380621" datatype="html">
+        <source> </source><target state="new"> </target>
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/common/headerfooter/header.component.ts</context><context context-type="linenumber">62</context></context-group></trans-unit><trans-unit id="6582573664846559511" datatype="html">
+        <source>Change Password</source><target state="new">Change Password</target>
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/common/headerfooter/header.component.ts</context><context context-type="linenumber">67</context></context-group></trans-unit><trans-unit id="6538000881258492645" datatype="html">
+        <source>Profile Setting</source><target state="new">Profile Setting</target>
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/common/headerfooter/header.component.ts</context><context context-type="linenumber">71</context></context-group></trans-unit><trans-unit id="4d13a9cd5ed3dcee0eab22cb25198d43886942be" datatype="html">
+        <source>Users</source>
+        <target state="new">Users</target>
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/common/headerfooter/header.component.html</context><context context-type="linenumber">17</context></context-group></trans-unit>
+      <trans-unit id="532729251019091817" datatype="html">
+        <source>Invalid Link URL</source><target state="new">Invalid Link URL</target>
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/common/auth/login/login.component.ts</context><context context-type="linenumber">61</context></context-group></trans-unit>
+      <trans-unit id="4311821701880365028" datatype="html">
+        <source>This URL is invalid&lt;BR>Select Mail Login again</source><target state="new">This URL is invalid&lt;BR>Select Mail Login again</target>
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/common/auth/login/login.component.ts</context><context context-type="linenumber">62</context></context-group></trans-unit>
+      <trans-unit id="7804884739861995066" datatype="html">
+        <source>Expire Link validation</source><target state="new">Expire Link validation</target>
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/common/auth/login/login.component.ts</context><context context-type="linenumber">69</context></context-group></trans-unit>
+      <trans-unit id="1662817842764314420" datatype="html">
+        <source>This URL is expired&lt;BR>Select Mail Login again.</source><target state="new">This URL is expired&lt;BR>Select Mail Login again.</target>
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/common/auth/login/login.component.ts</context><context context-type="linenumber">70</context></context-group></trans-unit>
+      <trans-unit id="1100767613427016220" datatype="html">
+        <source>Save initial password</source><target state="new">Save initial password</target>
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/common/auth/login/login.component.ts</context><context context-type="linenumber">81</context></context-group></trans-unit>
+      <trans-unit id="7109974531622038138" datatype="html">
+        <source>New Password is set. &lt;BR>Save correctly for the next time.</source><target state="new">New Password is set. &lt;BR>Save correctly for the next time.</target>
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/common/auth/login/login.component.ts</context><context context-type="linenumber">82</context></context-group></trans-unit>
+      <trans-unit id="4398334619590357601" datatype="html">
+        <source>Invalid UserID</source><target state="new">Invalid UserID</target>
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/common/auth/login/login.component.ts</context><context context-type="linenumber">103</context></context-group></trans-unit>
+      <trans-unit id="3170190289121338568" datatype="html">
+        <source>Expired Password</source><target state="new">Expired Password</target>
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/common/auth/login/login.component.ts</context><context context-type="linenumber">114</context></context-group></trans-unit><trans-unit id="3498359309834705074" datatype="html">
+        <source>This password is no longer valid.&lt;BR>Reset password by Mail Login.</source><target state="new">This password is no longer valid.&lt;BR>Reset password by Mail Login.</target>
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/common/auth/login/login.component.ts</context><context context-type="linenumber">115</context></context-group></trans-unit><trans-unit id="2163189087384620514" datatype="html">
+        <source>Not Activate Account</source><target state="new">Not Activate Account</target>
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/common/auth/login/login.component.ts</context><context context-type="linenumber">126</context></context-group></trans-unit><trans-unit id="4924043921585385099" datatype="html">
+        <source>This account is not activate.&lt;BR>Initialize by Mail Login.</source><target state="new">This account is not activate.&lt;BR>Initialize by Mail Login.</target>
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/common/auth/login/login.component.ts</context><context context-type="linenumber">127</context></context-group></trans-unit>
+      
+      <trans-unit id="6547873218643725223" datatype="html">
+        <source>Invalid Password</source><target state="new">Invalid Password</target>
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/common/auth/login/login.component.ts</context><context context-type="linenumber">137</context></context-group></trans-unit>
+      <trans-unit id="3041821449783026686" datatype="html">
+        <source>This UserID is not registered</source><target state="new">This UserID is not registered</target>
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/common/auth/login/login.component.ts</context><context context-type="linenumber">149</context></context-group></trans-unit>
+      <trans-unit id="6366948662249962116" datatype="html">
+        <source>Password setting is complited</source><target state="new">Password setting is complited</target>
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/common/auth/login/login.component.ts</context><context context-type="linenumber">155</context></context-group></trans-unit>
+      <trans-unit id="6398471370786347593" datatype="html">
+        <source>Close this window, login from mail url that you have recieved。</source>
+        <target state="new">Close this window, login from mail url that you have recieved。</target>
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/common/auth/login/login.component.ts</context><context context-type="linenumber">156</context></context-group></trans-unit><trans-unit id="6913962786056699215" datatype="html">
+        <source>New password will be generated automatically, and login by mail link. (When you forget the password, or initial login)</source><target state="new">New password will be generated automatically, and login by mail link. (When you forget the password, or initial login)</target>
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/common/auth/login/login.component.ts</context><context context-type="linenumber">191</context></context-group></trans-unit><trans-unit id="4817441175948877449" datatype="html">
+        <source>Confirm to Delete User</source><target state="new">Confirm to Delete User</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/common/users/users.component.ts</context>
+          <context context-type="linenumber">73</context>
+        </context-group>
+      </trans-unit>
+      
+      <trans-unit id="6ad31729632818476420bb0f698d617436263675" datatype="html">
+        <source>User Management</source><target state="new">User Management</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/common/users/users.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit><trans-unit id="e978b6dbccee4a05d5fbf7a63cacaabecd60a826" datatype="html">
+        <source> UID </source><target state="new"> UID </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/common/users/users.component.html</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="20371277706eedf7fd8a3f51633ca5d801cd4fc2" datatype="html">
+        <source> Name </source><target state="new"> Name </target>
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/common/users/users.component.html</context><context context-type="linenumber">24</context></context-group></trans-unit>
+      <trans-unit id="52c1447c1ec9570a2a3025c7e566557b8d19ed92" datatype="html">
+        <source> Role </source><target state="new"> Role </target>
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/common/users/users.component.html</context><context context-type="linenumber">34</context></context-group></trans-unit>
+      <trans-unit id="7b9b2f201c1c8561ea92b224bc9b8f12c02addc0" datatype="html">
+        <source> Password Update </source><target state="new"> Password Update </target>
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/common/users/users.component.html</context><context context-type="linenumber">40</context></context-group></trans-unit><trans-unit id="c56546dbe776b9d24c3316f52c26efb8ab42dab2" datatype="html">
+        <source>UserID</source><target state="new">UserID</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/common/users/users.dialog.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit><trans-unit id="cff1428d10d59d14e45edec3c735a27b5482db59" datatype="html">
+        <source>Name</source><target state="new">Name</target>
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/app-modules/organization/organization.dialog.html</context><context context-type="linenumber">7</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/common/users/users.dialog.html</context><context context-type="linenumber">12</context></context-group></trans-unit><trans-unit id="ec984ab36f1da5f75ba43f9bd4b866ca9c7e6493" datatype="html">
+        <source>Email Address</source><target state="new">Email Address</target>
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/common/users/users.dialog.html</context><context context-type="linenumber">16</context></context-group></trans-unit><trans-unit id="c36a66f2107e8da5371ebc9d15c2008dff567f46" datatype="html">
+        <source>Role</source><target state="new">Role</target>
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/common/users/users.dialog.html</context><context context-type="linenumber">21</context></context-group></trans-unit>
+      <trans-unit id="9132258381115211530" datatype="html">
+        <source>Duplicate key</source><target state="new">Duplicate key</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/common/base/messages.ts</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    </body>
+  </file>
+</xliff>

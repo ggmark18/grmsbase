@@ -1,0 +1,16 @@
+import { Module } from '@nestjs/common';
+//import { SampleModule } from './sample/sample.module';
+//import { SampleDAO } from './sample/entities/sample.entity';
+//export const mongoEntities = [SampleDAO];
+
+export const mongoEntities = [];
+export const SQLDBEntities = [];
+
+@Module({
+    imports: [
+//        SampleModule
+    ],
+    providers: [
+    ]
+})
+export class AppModules { }

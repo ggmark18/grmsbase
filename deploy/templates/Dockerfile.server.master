@@ -1,0 +1,39 @@
+FROM node:16-alpine as builder
+#If you need, setting proxy
+#RUN npm config -g set https-proxy http://proxy.yourcompany.com:8000
+#RUN npm config -g set http-proxy http://proxy.yourcompany.com:8000
+#RUN npm config -g set proxy http://proxy.yourcompany.com:8000
+ENV NODE_ENV development
+WORKDIR /home/node
+
+RUN apk add --no-cache  chromium --repository=http://dl-cdn.alpinelinux.org/alpine/v3.10/main
+
+COPY ["./server/package.json", "./server/nest-cli.json", "./server/tsconfig.build.json","./server/tsconfig.json","./"]
+COPY ["./server/src", "./src"]
+RUN npm install 
+RUN npm run build
+
+FROM node:16-alpine
+#If you need, setting proxy
+#RUN npm config -g set https-proxy http://proxy.yourcompany.com:8000
+#RUN npm config -g set http-proxy http://proxy.yourcompany.com:8000
+#RUN npm config -g set proxy http://proxy.yourcompany.com:8000
+ENV NODE_ENV production
+WORKDIR /home/node
+
+ENV LANG ja_JP.UTF-8
+
+RUN mkdir -p /usr/share/fonts/ipa
+COPY ["./deploy/assets/ipafonts/*", "/usr/share/fonts/ipa"]
+RUN fc-cache -fv
+
+RUN apk add --no-cache  chromium --repository=http://dl-cdn.alpinelinux.org/alpine/v3.10/main
+
+COPY --from=builder /home/node/package*.json /home/node/
+COPY --from=builder /home/node/dist /home/node/dist
+
+WORKDIR /home/node
+
+RUN npm ci
+EXPOSE 3000
+CMD [ "node", "dist/main" ]

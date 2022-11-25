@@ -1,0 +1,4 @@
+FROM mongo:3.6
+COPY ./init/mongodb/* /docker-entrypoint-initdb.d/
+EXPOSE 27017
+CMD ["mongod", "--auth"]

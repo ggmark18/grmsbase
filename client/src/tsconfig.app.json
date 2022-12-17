@@ -1,27 +1,34 @@
 {
      "compilerOptions": {
-        "baseUrl": "./",
-        "outDir": "./dist/out-tsc",
-        "sourceMap": true,
-        "declaration": false,
-        "module": "es2020",
-        "moduleResolution": "node",
-        "emitDecoratorMetadata": true,
-        "experimentalDecorators": true,
-        "importHelpers": true,
-        "target": "es2020",
-        "typeRoots": [
-            "node_modules/@types"
+      "baseUrl": "./",
+      "outDir": "./dist/out-tsc",
+      "sourceMap": true,
+      "declaration": false,
+      "module": "es2020",
+      "moduleResolution": "node",
+      "emitDecoratorMetadata": true,
+      "experimentalDecorators": true,
+      "importHelpers": true,
+      "target": "ES2022",
+      "typeRoots": [
+        "node_modules/@types"
+      ],
+      "lib": [
+        "es2018",
+        "dom"
+      ],
+      "paths": {
+        "@api-dto/*": [
+          "api-dto/*"
         ],
-        "lib": [
-            "es2018",
-            "dom"
+        "@grms/*": [
+          "app/*"
         ],
-         "paths": {
-             "@api-dto/*": ["api-dto/*"],
-             "@grms/*": ["app/*"],
-             "@grms-assets/*": ["assets/*"],
-        }
+        "@grms-assets/*": [
+          "assets/*"
+        ]
+      },
+      "useDefineForClassFields": false
     },
   "files": [
     "main.ts",

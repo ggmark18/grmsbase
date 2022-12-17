@@ -9,8 +9,8 @@
 </div>
 <div class="modal-footer row" >
   <div class="col text-center">
-    <button *ngIf="cancelButton" class="btn btn-cancel btn-sm mr-4" [mat-dialog-close]="'cancel'">{{buttonTitle}}</button>
-    <button *ngIf="okButtonClass" class="{{okButtonClass}}" [mat-dialog-close]="'ok'">{{buttonTitle}}</button>
-    <button *ngIf="!okButtonClass" class="btn btn-primary btn-md" [mat-dialog-close]="'ok'">{{buttonTitle}}</button>
+    <button *ngIf="cancelButton" class="btn btn-cancel btn-sm mr-4" [mat-dialog-close]="CANCEL">{{buttonTitle}}</button>
+    <button *ngIf="okButtonClass" class="{{okButtonClass}}" [mat-dialog-close]="OK">{{buttonTitle}}</button>
+    <button *ngIf="!okButtonClass" class="btn btn-primary btn-md" [mat-dialog-close]="OK">{{buttonTitle}}</button>
   </div>
 </div>

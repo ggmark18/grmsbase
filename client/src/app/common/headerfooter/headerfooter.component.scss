@@ -10,11 +10,17 @@ nav {
     .logo {
 	    padding: 0;
 	    margin-left: 10px;
+        .title {
+            float: left;
+        }
 	    img {
-	        height: 25px;
+            float: left;
+            padding-right: 10px;
+	        height: 30px;
 	    }
 	    color: #666;
-        font-size: 18px;
+        font-size: 20px;
+        text-decoration:none; 
     }
     .example-spacer {
         flex: 1 1 auto;

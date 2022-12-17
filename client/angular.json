@@ -35,11 +35,11 @@
                 "src/favicon.ico"
             ],
             "styles": [
-              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+                "./node_modules/bootstrap/dist/css/bootstrap.min.css",
                 "./node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
                 "./node_modules/@fortawesome/fontawesome-free/css/all.css",
-              "src/assets/theme/bootstrap.min.css",
-              "src/styles.scss"
+                "src/assets/theme/bootstrap.min.css",
+                "src/styles.scss"
             ],
               "scripts": [
                   "./node_modules/@fortawesome/fontawesome-free/js/all.js",

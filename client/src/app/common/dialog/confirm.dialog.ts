@@ -5,12 +5,20 @@ var _$iconType = {
     ERROR:{ icon:"fas fa-exclamation-triangle", color:"red"}
 };
 
+export declare const enum CloseStatus {
+    OK = "ok",
+    CANCEL = "cancel"
+}
+
 @Component({
     selector: 'confirm-dialog',
     templateUrl: 'confirm.dialog.html',
     styleUrls: ['./confirm.dialog.scss']
 })
 export class ConfirmDialog implements OnInit {
+
+    CANCEL : CloseStatus = CloseStatus.CANCEL;
+    OK : CloseStatus = CloseStatus.OK;
 
     static IconType = _$iconType;
 

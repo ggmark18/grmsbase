@@ -1,16 +1,28 @@
 import { Module } from '@nestjs/common';
+
+import { AuthEntities } from '@grms/common/auth/entities';
+
+import { UsersEntities } from '@grms/common/users/entities';
+import { UsersModule } from '@grms/common/users/module';
+
 //import { SampleModule } from './sample/sample.module';
 //import { SampleDAO } from './sample/entities/sample.entity';
 //export const mongoEntities = [SampleDAO];
 
 export const mongoEntities = [];
-export const SQLDBEntities = [];
+export const SQLDBEntities = [ ...AuthEntities, ...UsersEntities ];
 
 @Module({
     imports: [
+          UsersModule,    
 //        SampleModule
     ],
-    providers: [
-    ]
+    controllers: [],
+    providers: []
 })
 export class AppModules { }
+
+export function createSMTPServer() : SMTPServer {
+    return null;
+}
+

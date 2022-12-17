@@ -4,6 +4,8 @@ export default () => {
             title: 'GRMSBase API',
             description: 'The API description',
             version: '1.0'
-        }
+        },
+        smtpPort: 587   
     };
 }
+export const jwtConstants = 'GRMSBase'

@@ -4,7 +4,7 @@ import { UntypedFormGroup, UntypedFormControl, Validators, UntypedFormBuilder, V
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 import { AppRootLayout } from '@grms/app-root.layout';
-import { UsersService } from '@grms/common/users/users.service';
+import { AuthServiceBase} from '../auth.service';
 import { ErrorDialog } from '@grms/common/dialog/error.dialog';
 
 function PasswordMatchValidator(control: UntypedFormControl): ValidationErrors {
@@ -19,10 +19,10 @@ function PasswordMatchValidator(control: UntypedFormControl): ValidationErrors {
     templateUrl: './password.component.html',
     styleUrls: ['./login.component.scss']
 })
-export class PasswordComponent implements OnInit, OnDestroy {
-
+export class PasswordComponentBase implements OnInit, OnDestroy {
+    authService: AuthServiceBase;
+    
     passwordForm: UntypedFormGroup;
-
     password = new UntypedFormControl('', [Validators.required,
                                     Validators.minLength(6)]);
     password2 = new UntypedFormControl('', [Validators.required,
@@ -31,12 +31,11 @@ export class PasswordComponent implements OnInit, OnDestroy {
     showpassword = false;
     showpassword2 = false;
     
-    constructor(private usersService: UsersService,
-                private layout: AppRootLayout, 
-		        private formBuilder: UntypedFormBuilder,
-                private route: ActivatedRoute,
-		        private dialog: MatDialog,
-		        private router: Router) {
+    constructor(protected layout: AppRootLayout, 
+		        protected formBuilder: UntypedFormBuilder,
+                protected route: ActivatedRoute,
+		        protected dialog: MatDialog,
+		        protected router: Router) {
         this.passwordForm = this.formBuilder.group({
 	        password: this.password,
             password2: this.password2
@@ -52,7 +51,7 @@ export class PasswordComponent implements OnInit, OnDestroy {
     }
 
     change() : void {
-        this.usersService.changePassword(this.password.value).subscribe( ok => {
+        this.authService.changePassword(this.password.value).subscribe( ok => {
             this.router.navigate([this.layout.logoutURL()]);
         }, error => {
             this.dialog.open(ErrorDialog, {

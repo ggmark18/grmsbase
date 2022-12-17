@@ -1,8 +1,6 @@
 import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest} from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { DefaultAuthConfig } from './auth.config';
-
 export class AuthHeaderInterceptorBase implements HttpInterceptor {
 
     getTokenValue() { return null; }
@@ -21,13 +19,5 @@ export class AuthHeaderInterceptorBase implements HttpInterceptor {
         } else {
             return next.handle(req);
         }
-    }
-}
-
-export class AuthHeaderInterceptor extends AuthHeaderInterceptorBase {
-
-    getTokenValue() {
-        const config = new DefaultAuthConfig();
-	    return config.token;
     }
 }

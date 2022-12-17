@@ -5,7 +5,8 @@ import { Subscription } from 'rxjs';
 import { UsersService } from './users.service';
 import { ConfirmDialog } from '../dialog/confirm.dialog';
 import { DisplayMessage } from '../base/messages';
-import { AuthUser, UserRole, UserServiceError } from '../../../api-dto/common/users/dto.users';
+import { User, UserServiceError } from '@api-dto/common/users/dto.users';
+import { AuthRole } from '@api-dto/common/auth/dto.auth';
 
 import * as _ from 'lodash';
 
@@ -16,7 +17,7 @@ import * as _ from 'lodash';
 })
 export class UsersDialog implements OnInit, OnDestroy {
     
-    model: AuthUser;
+    model: User;
     attributes = [];
     roleCandidate = [];
     error = null;
@@ -37,10 +38,10 @@ export class UsersDialog implements OnInit, OnDestroy {
     public ngOnInit() {
         this.userForm = this.formBuilder.group({
             _id: [''],
-            userid: ['', [Validators.required]],
+            loginid: ['', [Validators.required]],
             name: ['', [Validators.required]],
             email: ['',[Validators.required, Validators.email]],
-            role: [UserRole.MEMBER],
+            role: [AuthRole.MEMBER],
         });
         if( this.model ) this.userForm.patchValue(this.model);
     }
@@ -75,6 +76,6 @@ export class UsersDialog implements OnInit, OnDestroy {
             });
         }
     }
-    get userid() { return this.userForm.get('userid'); }
+    get loginid() { return this.userForm.get('loginid'); }
     get email() { return this.userForm.get('email'); }
 }

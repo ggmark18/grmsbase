@@ -1,0 +1,6 @@
+[submodule "client/src/app/app-modules"]
+	path = client/src/app/app-modules
+	url = git@bitbucket.org:imawaka/gsrs-dao-client.git
+[submodule "server/src/app-modules"]
+	path = server/src/app-modules
+	url = git@bitbucket.org:imawaka/gsrs-dao-server.git

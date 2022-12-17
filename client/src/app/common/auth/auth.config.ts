@@ -1,15 +1,18 @@
 import { Injectable } from '@angular/core';
 
-import { serviceName } from '@api-dto/common/auth/dto.auth';
-
 export interface AuthParam {
     tokenKey: string
 
-    serviceName: string
+//    targetName: string
+
     loginAPI: string
-    signupCheckAPI?: string
+    loginUserAPI: string
+    typeCheckAPI: string
+    signupCheckAPI: string
+    changePasswordAPI: string
     mailloginAPI?: string
     decriptAPI?: string
+    TwoFactorLoginAPI?: string
 };
 
 export class AuthConfig {
@@ -37,16 +40,5 @@ export class AuthConfig {
 
     public get param(): AuthParam {
         return this._param;
-    }
-}
-
-@Injectable()
-export class DefaultAuthConfig extends AuthConfig {
-    constructor() {
-        super({
-            serviceName: serviceName,
-            tokenKey: 'GRMSBaseTokenKey',
-            loginAPI: '/api/auth/login',
-        });
     }
 }

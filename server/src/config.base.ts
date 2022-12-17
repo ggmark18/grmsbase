@@ -46,6 +46,7 @@ export default () => {
                 pass: process.env.GRMS_SMTP_PASS,
             }
         },
+        devmode: process.env.GRMS_DEVMODE || false,
     };
 }
 

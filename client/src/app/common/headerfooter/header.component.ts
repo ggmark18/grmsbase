@@ -5,9 +5,9 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 import { Observable } from 'rxjs';
 import { first } from 'rxjs/operators';
 
-import { AuthUser, UserStatus, UserRole } from '../../../api-dto/common/users/dto.users';
-import { AppRootLayout, HeaderLayoutConfig } from '../../app-root.layout';
-import { AuthService } from '../auth/auth.service';
+import { AuthUser } from '@api-dto/common/auth/dto.auth';
+import { AppRootLayout, LayoutConfig } from '../../app-root.layout';
+import { isAdmin } from '../auth/auth.service';
 import { ErrorDialog } from '../dialog/error.dialog';
 
 @Component({
@@ -17,13 +17,13 @@ import { ErrorDialog } from '../dialog/error.dialog';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
     
-    headerConfig$: Observable<HeaderLayoutConfig>;
+    layoutConfig$: Observable<LayoutConfig>;
 
     constructor( private layout: AppRootLayout,
 	             private router: Router,
 	             private dialog: MatDialog,
                  public title: Title ) {
-        this.headerConfig$ = this.layout.getHeaderLayoutConfig();
+        this.layoutConfig$ = this.layout.getLayoutConfig();
     }
     
     ngOnInit() {
@@ -32,14 +32,14 @@ export class HeaderComponent implements OnInit, OnDestroy {
     ngOnDestroy() {
     }
 
-    isAdmin(user) {
-        return AuthService.isAdmin(user);
+    isAdmin(user: AuthUser) {
+        return isAdmin(user);
     }
 
     userName(user) {
         let displayName = "";
         displayName += $localize`Hello! `;
-        displayName += user.name;
+        displayName += user?.name;
         displayName += $localize` `;
         return displayName;
     }

@@ -7,8 +7,8 @@ import * as CryptoJS from "crypto-js";
 import { NEVER } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 
-import { AuthServiceBase, AuthService } from '../auth.service';
-import { UserStatus, AuthType } from '@api-dto/common/users/dto.users';
+import { AuthServiceBase} from '../auth.service';
+import { AuthType, AuthStatus } from '@api-dto/common/auth/dto.auth';
 import { LoginError } from '@api-dto/common/auth/dto.auth';
 import { ConfirmDialog } from '@grms/common/dialog/confirm.dialog';
 import { ErrorDialog } from '@grms/common/dialog/error.dialog';
@@ -24,7 +24,7 @@ export class LoginComponentBase implements OnInit, OnDestroy {
     authService: AuthServiceBase;
 
     loginForm: FormGroup;
-    userid = new FormControl('', [Validators.required,
+    loginid = new FormControl('', [Validators.required,
                                   Validators.maxLength(16)]);
     password = new FormControl('', [Validators.required,
                                     Validators.minLength(6)]);
@@ -43,7 +43,7 @@ export class LoginComponentBase implements OnInit, OnDestroy {
 	             protected router: Router,
                  protected location: Location){
         this.loginForm = this.formBuilder.group({
-	        userid: this.userid,
+	        loginid: this.loginid,
 	        password: this.password,
             token: this.token
 	    });
@@ -65,7 +65,7 @@ export class LoginComponentBase implements OnInit, OnDestroy {
                 }})).subscribe(({ encripted, info }) => {
                     let dialogconfig = undefined;
                     if ( info.error ) {
-                        this.userid.setValue(info.userid);
+                        this.loginid.setValue(info.loginid);
                         if( info.error == LoginError.MISMATCH ) {
                             dialogconfig = {
                                 icon: ConfirmDialog.IconType.ERROR,
@@ -86,7 +86,7 @@ export class LoginComponentBase implements OnInit, OnDestroy {
                     } else {
                         let bytes = CryptoJS.AES.decrypt(encripted, info.salt);
                         let decripted = bytes.toString(CryptoJS.enc.Utf8);
-                        this.userid.setValue(info.userid);
+                        this.loginid.setValue(info.loginid);
                         this.password.setValue(decripted);
                         dialogconfig = {
                             title: $localize`Save initial password`,
@@ -109,17 +109,17 @@ export class LoginComponentBase implements OnInit, OnDestroy {
         this.showpassword = false;
     }
         
-    userIDReturn(e) {
+    loginIDReturn(e) {
         if(e.which == 13) {
-            this.checkUserID();
+            this.checkLoginID();
         } else {
             this.clearError();
         }
     }
 
-    async checkUserID() {
-        if( this.userid.value ) {
-            let authType = await this.authService.checkAuthType(this.userid.value);
+    async checkLoginID() {
+        if( this.loginid.value ) {
+            let authType = await this.authService.checkAuthType(this.loginid.value);
             if( authType == AuthType.TwoFactor ) {
                 this.token = new FormControl('',  [Validators.required,
                                               Validators.minLength(6)]);
@@ -127,23 +127,22 @@ export class LoginComponentBase implements OnInit, OnDestroy {
                 this.token = undefined;
             }
             if( !authType ) {
-                this.userid.setErrors({message:$localize`Invalid UserID`});
+                this.loginid.setErrors({message:$localize`Invalid LoginID`});
             }
         }
     }
     clearError() {}
     
     login() : void {
-        this.authService.signupCheck(this.userid.value).pipe(switchMap( status => {
-            if( status == UserStatus.NONE ) {
-                this.userid.setErrors({message:$localize`Invalid UserID`});
+        this.authService.signupCheck(this.loginid.value).pipe(switchMap( status => {
+            if( status == AuthStatus.NONE || status == AuthStatus.ENTRY  ) {
+                this.loginid.setErrors({message:$localize`Invalid LoginID`});
                 return NEVER;
             } else {
 	            return this.authService.login(this.loginForm.value);
             }})).subscribe( data => {
 		        this.router.navigate([this.authService.loginRootURL()]);
 	        }, error => {
-                console.log(error);
                 if( error.statusCode == 401 ) {
                     if( error.message == LoginError.EXPIRED ) {
                         let dialogconfig = {
@@ -182,12 +181,12 @@ export class LoginComponentBase implements OnInit, OnDestroy {
         url_locale = url_locale.replace(/^\/+|\/+$/g,'');
         if ( url_locale.length == 0) url_locale = '-';
 
-	    this.authService.signupCheck(this.userid.value).pipe(switchMap( status => {
-            if( status == UserStatus.NONE ) {
-                this.userid.setErrors({message:$localize`This UserID is not registered`});
+	    this.authService.signupCheck(this.loginid.value).pipe(switchMap( status => {
+            if( status == AuthStatus.NONE || status == AuthStatus.ENTRY  ) {
+                this.loginid.setErrors({message:$localize`This LoginID is not registered`});
                 return NEVER;
             } else {
-                return this.authService.maillogin(this.userid.value, url_locale);
+                return this.authService.maillogin(this.loginid.value, url_locale);
             }})).subscribe(status => {
                 let config = {
                     title: $localize`Password setting is complited`,
@@ -199,20 +198,20 @@ export class LoginComponentBase implements OnInit, OnDestroy {
                     width: '400px'
                 });
 	        }, error => {
-		        this.userid.setErrors({message:error.message});
+		        this.loginid.setErrors({message:error.message});
 	        });
     }
 
     get loginButtonClass() {
         let clname =  "btn-outline-secondary";
-        if( this.userid.valid && this.password.valid && this.token?.valid) {
+        if( this.loginid.valid && this.password.valid && this.token?.valid) {
             clname = "btn-login";
         }
         return clname;
     }
     get mailLoginButtonClass() {
         let clname =  "btn-outline-secondary";
-        if( this.userid.valid && !this.password.valid ) {
+        if( this.loginid.valid && !this.password.valid ) {
             clname = "btn-maillogin";
         }
         return clname;
@@ -230,26 +229,6 @@ export class LoginComponentBase implements OnInit, OnDestroy {
     }
 }
 
-@Component({
-    selector: 'app-login',
-    templateUrl: './login.component.html',
-    styleUrls: ['./login.component.scss']
-})
-export class LoginComponent extends LoginComponentBase {
-    
-    constructor( protected auth: AuthService,
-	             protected formBuilder: UntypedFormBuilder,
-                 protected route: ActivatedRoute,
-	             protected dialog: MatDialog,
-	             protected router: Router,
-                 protected location: Location){
-        super(formBuilder, route, dialog, router,location);
-        this.authService = auth;
-        this._title = 'Admin Management';
-        this._icon = 'assets/images/IMBase-logo.png';
-        this._maillogin = true;
-    }
-}
 
 
 

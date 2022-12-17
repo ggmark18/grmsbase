@@ -1,73 +1,47 @@
 import { Injectable, ConflictException } from '@nestjs/common';
-import { PSAuthUser } from './entities/authUsers.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
-import config from '../../config.base';
-import { AuthUser, UserServiceError, AuthType } from './dto.users';
+import config from '@grms/config.base';
+import { User, UserMixIn, targetName } from './dto.users';
+import { AuthType } from '../auth/dto.auth';
+import { PSUser } from './entities/users.entity';
 
 @Injectable()
 export class UsersService {
     constructor(
-        @InjectRepository(PSAuthUser,'sqldb')
-        private readonly userRepository: Repository<PSAuthUser>,
+        @InjectRepository(PSUser,'sqldb')
+        private readonly userRepository: Repository<PSUser>,
     ) {}
 
-    async findAuthUser(userid: string, target: string): Promise<PSAuthUser | undefined> {
-        return await this.userRepository.findOne({
-            select: ['_id', 'password','name','role','salt','passwordUpdated','userid'],
-            relations: { target: true },
-            where: { userid: userid, target: { name: target } },
-        });
+    async getAllUsers() : Promise<PSUser[]> {
+        return await this.userRepository.find({ relations: { auth: true }});
     }
 
-    async getAllUsers(target:string) : Promise<AuthUser[]> {
-        return await this.userRepository.find({
-            select: ['_id', 'userid','email','name','role','passwordUpdated'],
-            relations: { target: true },
-            where : { target: { name: target }}
-        });
-    }
-
-    async findByID(id: any): Promise<PSAuthUser | undefined> {
+    async findByID(id: any): Promise<PSUser | undefined> {
         return await this.userRepository.findOne({
-            relations: { target: true },
+            relations: { auth: true },
             where: {_id: id} });
     }
 
-    async findByUID(uid: any, target: string ): Promise<PSAuthUser | undefined> {
+    async findByLoginID(loginid: string ): Promise<PSUser | undefined> {
         return await this.userRepository.findOne({
-            relations: { target: true },
-            where : { userid: uid, target: { name: target }}
+            relations: { auth: { target: true } },
+            where : { loginid: loginid, auth: {target: { name: targetName }}}
         });
     }
     
-    async insert(user: Partial<AuthUser> ) : Promise<AuthUser> {
+    async insert(user: Partial<PSUser> ) : Promise<User> {
         let {_id, ...attributes} = user;
         return await this.save(attributes);
     }
     
-    async save( user: Partial<AuthUser> ) : Promise<AuthUser> {
-        return await this.userRepository.save(user);
+    async save( user: Partial<PSUser> ) : Promise<User> {
+        const { auth, ...saved } = await this.userRepository.save(user);
+        return saved;
     }
 
-    async remove( user: PSAuthUser ) : Promise<void>{
+    async remove( user: PSUser ) : Promise<void>{
         await this.userRepository.remove(user);
     }
-
-    async setTFAuthSecret( id, secret ) {
-        let user = await this.userRepository.findOne(id);
-        if( user ) {
-            user.authToken = secret;
-            await this.userRepository.save(user);
-        }
-    }
-    async turnOnTFAuth(id) {
-        let user = await this.userRepository.findOne(id);
-        if( user ) {
-            user.authType = AuthType.TwoFactor;
-            await this.userRepository.save(user);
-        }
-    }
-
 }

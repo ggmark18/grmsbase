@@ -1,4 +1,4 @@
-@import '../../../assets/theme/im-color-palette';
+
 
 H3 {
     color: #777;
@@ -44,12 +44,16 @@ th {
     border-bottom: 1px lightgray solid;
 }
 
-.mat-column-userid {
+.mat-column-loginid {
     width: 100px;
 }
 
+.mat-column-name {
+    width: 110px;
+}
+
 .mat-column-email {
-    width: 350px;
+    width: 200px;
 }
 .mat-column-role {
     width: 80px;

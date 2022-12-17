@@ -1,8 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~quill/dist/quill.core.css";
 @import "~quill/dist/quill.snow.css";
-@import './assets/theme/im-angular-material';
-@import './assets/theme/im-color-palette';
+
+@import './assets/theme/color-palette';
+@import './assets/theme/angular-material';
 @import "~@fortawesome/fontawesome-free/css/fontawesome.css";
 @import "~@fortawesome/fontawesome-free/css/solid.css";
 @import "~@fortawesome/fontawesome-free/css/regular.css";

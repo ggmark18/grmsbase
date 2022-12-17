@@ -4,7 +4,7 @@ import { DOCUMENT } from '@angular/common';
 import { Observable, Subject } from 'rxjs';
 import * as _ from 'lodash';
 
-import { AuthUser } from '../api-dto/common/users/dto.users';
+import { AuthUser } from '../api-dto/common/auth/dto.auth';
 
 interface MenuItem {
     name: string
@@ -15,7 +15,7 @@ interface MenuItem {
     check: any
 }
 
-export class HeaderLayoutConfig {
+export class LayoutConfig {
 
     user: AuthUser = undefined;
     
@@ -45,27 +45,26 @@ export class AppRootLayout {
 
     footer = true;
 
-    headerConfig: HeaderLayoutConfig = null;
-    $headerConfig = new Subject<HeaderLayoutConfig>();
+    layoutConfig: LayoutConfig = null;
+    $layoutConfig = new Subject<LayoutConfig>();
     
     constructor( private titleService:Title,
                  @Inject(DOCUMENT) private _document: HTMLDocument ) {
     }
 
-    createHeader(): HeaderLayoutConfig {
-        this.headerConfig = new HeaderLayoutConfig();
-        return this.headerConfig;
+    createConfig(): LayoutConfig {
+        this.layoutConfig = new LayoutConfig();
+        return this.layoutConfig;
     }
 
-    getHeaderLayoutConfig() : Observable<HeaderLayoutConfig> {
-        return this.$headerConfig.asObservable();
+    getLayoutConfig() : Observable<LayoutConfig> {
+        return this.$layoutConfig.asObservable();
     }
 
     hasFooter () { return this.footer; }
 
-    subscribeHeaderLayoutConfig(user: AuthUser) {
-        if( this.headerConfig )  this.headerConfig.user = user;
-        return this.$headerConfig.next(this.headerConfig);
+    subscribeLayoutConfig() {
+        return this.$layoutConfig.next(this.layoutConfig);
     }
 
     setTitle( title ) {  this.titleService.setTitle(title); }
@@ -78,15 +77,15 @@ export class AppRootLayout {
 
     clear() {
         this.footer = true;
-        this.headerConfig = null;
+        this.layoutConfig = null;
     }
 
     loginURL() : string {
-        return this.headerConfig?.loginURL;
+        return this.layoutConfig?.loginURL;
     }
 
     logoutURL() : string {
-        return this.headerConfig?.logoutURL;
+        return this.layoutConfig?.logoutURL;
     }
 }
 

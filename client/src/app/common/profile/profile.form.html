@@ -1,0 +1,5 @@
+<form [formGroup]="profileForm">
+  <mat-form-field *ngFor="let attribute of attrs">
+    <input matInput [placeholder]="attribute.title" [name]="attribute.key" [formControlName]="attribute.key">
+  </mat-form-field>
+</form>

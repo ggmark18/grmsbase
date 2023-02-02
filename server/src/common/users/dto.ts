@@ -1,4 +1,4 @@
-import { AuthUser, AuthStatus } from '../auth/dto.auth';
+import { AuthUser, AuthStatus } from '../auth/dto';
 
 export const targetName = 'GRMSBase'
 

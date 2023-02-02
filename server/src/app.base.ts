@@ -5,9 +5,7 @@ import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
 
 import { AppGateway } from './app.gateway';
-import { AuthService } from './common/auth/auth.service';
-import { PSAuthInfo } from './common/auth/entities/authInfo.entity';
-import { PSAuthTarget } from './common/auth/entities/authTargets.entity';
+import { AuthService } from './common/auth';
 import { AppModules, mongoEntities, SQLDBEntities } from './app-modules/app.modules';
 import config_base from './config.base';
 import app_config from './app-modules/app.config';

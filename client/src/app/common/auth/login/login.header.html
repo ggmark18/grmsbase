@@ -1,0 +1,11 @@
+<div class="form-top">
+  <div class="form-top-left">
+    <h2>Login</h2>
+    <img [src]="parts.icon" *ngIf="parts.icon"/><div class="_title" *ngIf="parts.title">&nbsp;{{parts.title}}</div>
+  </div>
+  <div class="form-top-right">
+    <i class="fa fa-lock"></i>
+  </div>
+</div>
+<grms-login [auth]='auth'></grms-login>
+

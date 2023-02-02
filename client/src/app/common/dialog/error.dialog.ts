@@ -3,8 +3,8 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 
 @Component({
     selector: 'error.dialog',
-    styleUrls: ['./error.dialog.scss'],
-    templateUrl: 'error.dialog.html'
+    templateUrl: 'error.dialog.html',
+    styleUrls: ['./common.dialog.scss'],
 })
 export class ErrorDialog {
     constructor(@Inject(MAT_DIALOG_DATA) public data, 

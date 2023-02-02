@@ -4,10 +4,10 @@ export enum AuthType {
 }
 
 export enum AuthStatus {
-    NONE    = "None",
-    ENTRY   = "Entry",
-    INITIAL = "Initial",
-    SIGNUP  = "Signup",
+    NONE = 'None',
+    ENTRY = 'Entry',
+    INITIAL = 'Initial',
+    SIGNUP = 'Signup'
 }
 
 export enum AuthRole {
@@ -49,6 +49,11 @@ export interface Payload {
     isTwoFactorAuthenticated?: boolean
 }
 
+export interface SignupInfo {
+    loginid: string,
+    password: string
+}
+
 export interface DecodeInfo {
     loginid?: string
     salt?: string
@@ -64,6 +69,12 @@ export interface ChangePassword {
     userid: string
     password: string
 }
+
+export enum LoginMode {
+    SIGNUP = 'signup',
+    RESET = 'reset',
+}
+
 export enum LoginError {
     UNINITIAL='uninitial',
     MISMATCH= 'mismatch',

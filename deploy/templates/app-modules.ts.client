@@ -5,7 +5,7 @@ import { AppSharedModule } from '../app.share';
 import { AppHomeComponent } from './app-home.component';
 
 import { UsersModule } from '@grms/common/users/module';
-import { AuthGuardUsers } from '@grms/common/users/users.auth';
+import { AuthGuardUsers } from '@grms/common/users/auth';
 
 const routes: Routes = [
     { path: '', component: AppHomeComponent },

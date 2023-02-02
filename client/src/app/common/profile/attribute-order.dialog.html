@@ -1,0 +1,28 @@
+<mat-dialog>
+  <h3 mat-dialog-title>会員属性項目編集</h3>
+  <div class="new-botton"><button matButton (click)="editAttribute()" class="btn btn-new btn-sm"></button></div>
+  <mat-dialog-content class="dialog-container">
+    <div cdkDropList class="attribute-list" (cdkDropListDropped)="drop($event)">
+      <div class="attribute-box row" *ngFor="let attribute of attributes" cdkDrag>
+          <div class="attribute-custom-placeholder" *cdkDragPlaceholder></div>
+          <div class="col-3">{{attribute.key}}</div>
+          <div class="col-4">{{attribute.title}}</div>
+          <div class="col-3">{{attribute.prefix}}:{{attribute.postfix}}</div>
+          <div class="col-1 pl-0">{{(attribute.show)?'✔︎':''}}</div>
+          <div class="col-1 function"><button matButton (click)="editAttribute(attribute)" class="btn btn-edit btn-sm mr-0"></button></div>
+      </div>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <div class="btn-group dialog-footer-button">
+      <div class="w-100">
+        <button class="btn btn-save" (click)="save()"></button>
+        <button class="btn btn-cancel" matDialogClose></button>
+      </div>
+    </div>
+  </mat-dialog-actions>
+  <div class="alert alert-danger alert-dismissible"  *ngIf="error">
+    <button type="button" class="close" (click)="error=null;" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    {{error}}
+  </div>
+</mat-dialog>

@@ -1,14 +1,15 @@
 import { Controller, UseGuards, Param, Request, Response, Get, Put, Post, Delete, Body, HttpCode,
          ForbiddenException, NotFoundException } from '@nestjs/common';
-import { AuthService } from '@grms/common/auth/auth.service';
-import { checkStatus } from '@grms/common/auth/auth.function';
-import { AuthType, AuthStatus, ChangePassword, LoginError } from '@grms/common/auth/dto.auth';
+import { AuthService, checkStatus } from '@grms/common/auth';
+import { AuthType, AuthStatus, ChangePassword, LoginError } from '@grms/common/auth/dto';
 
 import { JwtAuthGuard } from './authGuards/jwt-auth.guard';
 import { JwtAdminGuard } from './authGuards/jwt-admin.guard';
 import { LocalAuthGuard } from './authGuards/local-auth.guard';
-import { UsersService } from './users.service';
-import { User, UserMixIn, targetName } from './dto.users';
+
+import { User, UserMixIn, targetName } from './dto';
+import { UsersService } from './service';
+
 
 @Controller('api/users')
 export class UsersController {
@@ -82,9 +83,10 @@ export class UsersController {
         let users =  await this.usersService.getAllUsers();
         let mixins = [];
         for( let user of users ) {
-            mixins.push({ ...user,
-                          passwordUpdated: user.auth?.passwordUpdated,
-                          status: checkStatus(user, user.auth) })
+            const { auth, ...attributes } = user;
+            mixins.push({ ...attributes,
+                          passwordUpdated: auth?.passwordUpdated,
+                          status: checkStatus(attributes, auth) })
         }
         return mixins;
     }

@@ -1,19 +1,17 @@
 import { Component, Optional, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+
+import { CloseStatus } from '.';
+
 var _$iconType = {
     INFO: { icon:"fas fa-info-circle",          color:"black"},
     ERROR:{ icon:"fas fa-exclamation-triangle", color:"red"}
 };
 
-export declare const enum CloseStatus {
-    OK = "ok",
-    CANCEL = "cancel"
-}
-
 @Component({
     selector: 'confirm-dialog',
     templateUrl: 'confirm.dialog.html',
-    styleUrls: ['./confirm.dialog.scss']
+    styleUrls: ['./common.dialog.scss']
 })
 export class ConfirmDialog implements OnInit {
 

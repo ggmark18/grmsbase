@@ -1,0 +1,12 @@
+<div class="post-detail">
+  <H2>{{_post?.title}}</H2>
+  <div class="row">
+    <div class="col text-start">
+      <div class="date"><i class="far fa-clock"></i>&nbsp;{{_post.updatedAt | date:'yyyy年MM月dd日 HH:mm'}}</div>
+    </div>
+    <div class="col writer">{{_post.writer}}</div>
+  <P>
+  <div *ngFor="let block of _blocks">
+    <notion-block [block]="block"></notion-block>
+  </div>
+</div>

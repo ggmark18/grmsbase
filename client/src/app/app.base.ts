@@ -11,19 +11,13 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { AppRoot } from './app-root.component';
 import { AppRootLayout } from './app-root.layout';
 import { AppMaterialModule } from './app.material';
-import { ProfileForm } from './common/profile';
+import { CommonDialogModule } from './common/dialog';
 import { CatchErrorInterceptor } from './common/base/http-error.interceptor';
 
 import { AboutComponent } from './common/aboutIMB/about.component';
 import { HeaderComponent } from './common/headerfooter/header.component';
 import { FooterComponent } from './common/headerfooter/footer.component';
 
-import { LoginComponentBase } from './common/auth/login/login.component';
-import { LogoutComponentBase } from './common/auth/login/logout.component';
-import { PasswordComponentBase } from './common/auth/login/password.component';
-import { ConfirmDialog } from './common/dialog/confirm.dialog';
-import { ErrorDialog } from './common/dialog/error.dialog';
-import { InternalErrorDialog } from './common/dialog/internal-error.dialog';
 import { SocketService } from './common/base/socket.service';
 import { AppSharedModule } from './app.share';
 import { AppModules } from './app-modules/app.modules';
@@ -41,22 +35,16 @@ const routes: Routes = [
         FormsModule,
         ReactiveFormsModule,
         AppMaterialModule,
-        AppModules,
+        BsDropdownModule.forRoot(),
+        CommonDialogModule,
         AppSharedModule,
-        BsDropdownModule.forRoot()
+        AppModules,
     ],
     declarations: [
         AppRoot,
         AboutComponent,
         HeaderComponent,
         FooterComponent,
-        ConfirmDialog,
-        ErrorDialog,
-        InternalErrorDialog,
-        LoginComponentBase,
-        LogoutComponentBase,
-        PasswordComponentBase,
-        ProfileForm,
     ],
     providers: [
         SocketService,

@@ -2,7 +2,7 @@ import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
 import { AuthGuard } from '@nestjs/passport';
 
-import { AuthRole } from '../../auth/dto.auth';
+import { AuthRole } from '../../auth/dto';
 
 @Injectable()
 export class JwtAdminGuard extends AuthGuard('jwt') {

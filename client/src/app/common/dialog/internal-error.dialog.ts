@@ -5,7 +5,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 @Component({
     selector: 'internal-error',
     templateUrl: './internal-error.dialog.html',
-    styleUrls: ['./error.dialog.scss']    
+    styleUrls: ['./common.dialog.scss']    
 })
 export class InternalErrorDialog implements OnInit {
 

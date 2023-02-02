@@ -10,7 +10,7 @@ export class AboutComponent {
     stacks = [
         {
             name: "Angular",
-            version: "v15.0.4",
+            version: "v14.1.0",
             logo: "https://angular.io/assets/images/logos/angular/angular.svg",
             link: "https://angular.io",
             doc: "https://angular.io/docs",

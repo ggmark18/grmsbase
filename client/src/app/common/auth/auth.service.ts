@@ -1,12 +1,19 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
 import jwt_decode from 'jwt-decode';
 import { map } from 'rxjs/operators';
 import { AppRootLayout } from '../../app-root.layout';
 import { SocketService } from '../base/socket.service';
 import { AuthConfig } from './auth.config';
-import { AuthUser, AuthRole, LoginInfo, Payload, DecodeInfo, ChangePassword } from '@api-dto/common/auth/dto.auth';
+import { AuthUser, AuthRole, AuthStatus, LoginInfo, Payload, DecodeInfo, ChangePassword } from '@api-dto/common/auth/dto';
+
+export interface LoginParam {
+    loginid: string,
+    password: string,
+    token?: string
+}
 
 export function isAdmin( user: AuthUser ) : boolean {
     return user?.role == AuthRole.ADMIN;
@@ -34,9 +41,9 @@ export class AuthServiceBase {
 	    }
     }
 
-    login(useridAndPassword) : Observable<AuthUser> {
+    login(loginparam: LoginParam) : Observable<AuthUser> {
 	    return Observable.create(observer => {
-	        this.http.post(this.authConfig.param.loginAPI, useridAndPassword )
+	        this.http.post(this.authConfig.param.loginAPI, loginparam )
 		        .subscribe( async (info : LoginInfo) => {
                     let access_token = info.access_token
                     if( access_token ) {
@@ -44,7 +51,7 @@ export class AuthServiceBase {
                         const decodedUser = this.decodeUserFromToken(access_token);
                         try {
                             if( decodedUser.isTwoFactorAuthenticated ) {
-                                await this.twoFactorAuth(decodedUser.userid, useridAndPassword.token);
+                                await this.twoFactorAuth(decodedUser.userid, loginparam.token);
                             }
                             this.setDecodedUser(decodedUser);
                             observer.next({user: decodedUser});
@@ -73,29 +80,50 @@ export class AuthServiceBase {
             });
         });
 	}
-
     signupCheck( userid: string ) : Observable<any> {
         let url = this.authConfig.param.signupCheckAPI;
 	    return this.http.get(`${url}/${userid}`,{ responseType: 'text'});
     }
-
     maillogin(userid, locale) : Observable<any> {
         let url = this.authConfig.param.mailloginAPI;
         return this.http.get(`${url}/${userid}/${locale}`,{ responseType: 'text'});
     }
-
+    getToken() {
+        return this.authConfig.token;
+    }
     decriptInfo(id: string, key: string ) : Observable<DecodeInfo> {
         let url = this.authConfig.param.decriptAPI;
         return this.http.post<DecodeInfo>(url, { id: id, key: key });
     }
-
-    logout(): void {
+    prelogin(id, encripted) {
+        let url = this.authConfig.param.preloginAPI;
+        return Observable.create(observer => {
+            this.http.put(url,{ userid:id, encripted:encripted })
+		        .subscribe( async (info : LoginInfo) => {
+                    let access_token = info.access_token
+                    if( access_token ) this.authConfig.saveToken(access_token);
+	                observer.complete();
+		        }, error => {
+                    observer.error(error);
+                    observer.complete();
+                })
+	    });
+    }
+    signup(password) {
+        let url = this.authConfig.param.signupAPI;
+        return this.http.put(url, { password: password } );
+    }
+    logout(layout: AppRootLayout, router: Router = null): void {
 	    this.authConfig.signOut();
         let user = this.getUser();
         if( user ) {
             this.socket.emit('logout', { userID: user._id });
         }
 	    this.setUser(null);
+        let loginURL = layout.loginURL();
+        layout.clear();
+        layout.subscribeLayoutConfig();
+        if( router && loginURL ) router.navigate([loginURL]);
     }
 
     async getLoginUser(): Promise<any> {

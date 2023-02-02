@@ -1,10 +1,10 @@
 import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn,AfterLoad, BeforeUpdate, Index } from 'typeorm'
 import { Contains, IsInt, Length, IsEmail, IsFQDN, IsDate, Min, Max } from 'class-validator'
 
-import { checkStatus } from '@grms/common/auth/auth.function';
+import { checkStatus } from '@grms/common/auth';
 import { WebSocketSubscriber } from '@grms/common/socket/WebSocketSubscriber';
-import { AuthInfo, AuthUser, AuthRole} from '@grms/common/auth/dto.auth'
-import { User, UserMixIn, Entities } from '@grms/common/users/dto.users'
+import { AuthInfo, AuthUser, AuthRole} from '@grms/common/auth/dto'
+import { User, UserMixIn, Entities } from '@grms/common/users/dto'
 import { PSAuthInfo } from '@grms/common/auth/entities/authInfo.entity'
 
 @Entity('Users')

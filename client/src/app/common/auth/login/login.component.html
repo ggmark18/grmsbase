@@ -1,14 +1,5 @@
 <div class="login">
   <form [formGroup]="loginForm" class="form" name="form" novalidate>
-    <div class="form-top">
-      <div class="form-top-left">
-	    <h2>Login</h2>
-        <img [src]="_icon" *ngIf="_icon"/><div class="_title" *ngIf="_title">&nbsp;{{_title}}</div>
-      </div>
-      <div class="form-top-right">
-	    <i class="fa fa-lock"></i>
-      </div>
-    </div>
     <div class="form-body">
       <div class="form-group">
 	    <input type="loginid" name="loginid" class="form-control"

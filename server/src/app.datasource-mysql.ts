@@ -1,8 +1,9 @@
 import "reflect-metadata"
 import { DataSource } from "typeorm"
-import { PSAuthInfo } from './common/auth/entities/authInfo.entity';
-import { PSAuthTarget } from './common/auth/entities/authTargets.entity';
-import { mongoEntities, SQLDBEntities } from './app-modules/app.modules';
+import { AuthEntities } from './common/auth/entities';
+import { UsersEntities } from './common/users/entities';
+import { APP_SQLDBEntities } from './app-modules/app.entities';
+
 import config from './config.base';
 
 export const AppMySQLDataSource = new DataSource({
@@ -14,7 +15,7 @@ export const AppMySQLDataSource = new DataSource({
     database: config().sqldb.name,
     synchronize: true,
     logging: false,
-    entities: [ PSAuthTarget, PSAuthInfo, ...SQLDBEntities],
+    entities: [ ...AuthEntities, ...UsersEntities, ...APP_SQLDBEntities],
     migrations: [config().migrations],
 });
 

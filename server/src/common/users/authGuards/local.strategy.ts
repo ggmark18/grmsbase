@@ -2,11 +2,11 @@ import { Strategy } from 'passport-local';
 import { PassportStrategy } from '@nestjs/passport';
 import { Injectable, UnauthorizedException, HttpException, HttpStatus } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { validatePassword } from '@grms/common/auth/auth.function';
+import { validatePassword } from '@grms/common/auth';
 import { calcDays } from '@grms/common/tools/formats/date';
-import { LoginError } from '@grms/common/auth/dto.auth';
+import { LoginError } from '@grms/common/auth/dto';
 
-import { UsersService } from '../users.service';
+import { UsersService } from '../service';
 
 
 class ExpiredException extends HttpException {

@@ -1,0 +1,32 @@
+<div class="container">
+  <form [formGroup]="nameForm">
+    <div class="row">
+      <div class="col-4 pr-0">
+        <mat-form-field class="lastname" appearance="fill">
+          <mat-label>姓</mat-label>
+          <input matInput id='lastname' formControlName="lastname">
+        </mat-form-field>
+      </div>
+      <div class="col-4 pl-2">
+        <mat-form-field class="firstname" appearance="fill">
+          <mat-label>名</mat-label>
+          <input matInput id='firstname' formControlName="firstname" >
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-4 pr-0">
+        <mat-form-field class="lastkana" appearance="fill">
+          <mat-label>せい</mat-label>
+          <input matInput id='lastkana' #lastkana formControlName="lastkana">
+        </mat-form-field>
+      </div>
+      <div class="col-4 pl-2">
+        <mat-form-field class="firstkana" appearance="fill">
+          <mat-label>めい</mat-label>
+          <input matInput id='firstkana' #firstkana formControlName="firstkana">
+        </mat-form-field>
+      </div>
+    </div>
+  </form>
+</div>

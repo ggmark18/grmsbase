@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, Injector, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input, Injector, ViewChild, ElementRef } from '@angular/core';
 import { Location } from '@angular/common';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { FormGroup, FormControl, Validators, UntypedFormBuilder, ReactiveFormsModule } from '@angular/forms';
@@ -7,19 +7,35 @@ import * as CryptoJS from "crypto-js";
 import { NEVER } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 
-import { AuthServiceBase} from '../auth.service';
-import { AuthType, AuthStatus } from '@api-dto/common/auth/dto.auth';
-import { LoginError } from '@api-dto/common/auth/dto.auth';
+import { AuthServiceBase, LoginParam } from '../auth.service';
+import { AuthType, AuthStatus, LoginError } from '@api-dto/common/auth/dto';
 import { ConfirmDialog } from '@grms/common/dialog/confirm.dialog';
 import { ErrorDialog } from '@grms/common/dialog/error.dialog';
 
+export interface HeaderParts {
+    icon : string,
+    title: string
+}
+
 @Component({
-    selector: 'app-login',
+    selector: 'grms-login',
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.scss']
 })
 export class LoginComponentBase implements OnInit, OnDestroy {
+    @Input() set auth( service ) {
+        this.authService = service;
+    }
+    @Input() set postfixID( id ) {
+        this._postfixID = id;
+    }
     @ViewChild("passwordField") passwordElement: ElementRef;
+
+    _postfixID = undefined;
+    
+    static selector(authServiceString) {
+        return `<grms-login [auth]='${authServiceString}'></grms-login>`;
+    }
 
     authService: AuthServiceBase;
 
@@ -66,6 +82,10 @@ export class LoginComponentBase implements OnInit, OnDestroy {
                     let dialogconfig = undefined;
                     if ( info.error ) {
                         this.loginid.setValue(info.loginid);
+
+
+
+
                         if( info.error == LoginError.MISMATCH ) {
                             dialogconfig = {
                                 icon: ConfirmDialog.IconType.ERROR,
@@ -134,12 +154,12 @@ export class LoginComponentBase implements OnInit, OnDestroy {
     clearError() {}
     
     login() : void {
-        this.authService.signupCheck(this.loginid.value).pipe(switchMap( status => {
+        this.authService.signupCheck(this.modifyLoginID(this.loginid.value)).pipe(switchMap( status => {
             if( status == AuthStatus.NONE || status == AuthStatus.ENTRY  ) {
                 this.loginid.setErrors({message:$localize`Invalid LoginID`});
                 return NEVER;
             } else {
-	            return this.authService.login(this.loginForm.value);
+	            return this.authService.login(this.modifyLoginParam(this.loginForm.value));
             }})).subscribe( data => {
 		        this.router.navigate([this.authService.loginRootURL()]);
 	        }, error => {
@@ -200,6 +220,19 @@ export class LoginComponentBase implements OnInit, OnDestroy {
 	        }, error => {
 		        this.loginid.setErrors({message:error.message});
 	        });
+    }
+
+    modifyLoginParam( param: LoginParam ) {
+        let modified = Object.assign({}, param);
+        modified.loginid = this.modifyLoginID(param.loginid);
+        return modified;
+    }
+    modifyLoginID( id: string ) {
+        let modified = id
+        if( this._postfixID ) {
+            modified = `${id}-${this._postfixID}`;
+        }
+        return modified;
     }
 
     get loginButtonClass() {

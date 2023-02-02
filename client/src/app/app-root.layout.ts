@@ -4,7 +4,7 @@ import { DOCUMENT } from '@angular/common';
 import { Observable, Subject } from 'rxjs';
 import * as _ from 'lodash';
 
-import { AuthUser } from '../api-dto/common/auth/dto.auth';
+import { AuthUser } from '../api-dto/common/auth/dto';
 
 interface MenuItem {
     name: string
@@ -86,6 +86,19 @@ export class AppRootLayout {
 
     logoutURL() : string {
         return this.layoutConfig?.logoutURL;
+    }
+
+    updateLogo() {
+        if( this.layoutConfig ) {
+            let logo = this.layoutConfig.logo;
+            var uid = (new Date().getTime()).toString(36);
+            logo += `?${uid}`;
+            this.layoutConfig.logo = logo;
+        }
+    }
+
+    get logo() : string {
+        return this.layoutConfig?.logo;
     }
 }
 

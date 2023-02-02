@@ -2,107 +2,103 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file source-language="en-US" datatype="plaintext" original="ng2.template">
     <body>
-      <trans-unit id="64067e1999bba00da6e5fdd3adab666795b546ad" datatype="html">
-        <source>Organization Management</source><target state="new">Organization Management</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/app-modules/organization/organization.component.html</context>
-          <context context-type="linenumber">2</context>
-        </context-group>
-      </trans-unit><trans-unit id="2634480406937409114" datatype="html">
-        <source>Confirm to Delete Organization</source><target state="new">Confirm to Delete Organization</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/app-modules/organization/organization.component.ts</context>
-          <context context-type="linenumber">71</context>
-        </context-group>
-      </trans-unit><trans-unit id="4466434183091514737" datatype="html">
+      <trans-unit id="4466434183091514737" datatype="html">
         <source>Hello! </source>
         <target> </target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/common/headerfooter/header.component.ts</context><context context-type="linenumber">60</context></context-group></trans-unit><trans-unit id="2194421213635380621" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/common/headerfooter/header.component.ts</context><context context-type="linenumber">41</context></context-group></trans-unit><trans-unit id="2194421213635380621" datatype="html">
       <source> </source>
       <target>さん</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/common/headerfooter/header.component.ts</context><context context-type="linenumber">62</context></context-group></trans-unit><trans-unit id="6582573664846559511" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/common/headerfooter/header.component.ts</context><context context-type="linenumber">43</context></context-group></trans-unit><trans-unit id="6582573664846559511" datatype="html">
       <source>Change Password</source>
       <target>パスワード変更</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/common/headerfooter/header.component.ts</context><context context-type="linenumber">67</context></context-group></trans-unit><trans-unit id="6538000881258492645" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/common/headerfooter/header.component.ts</context><context context-type="linenumber">48</context></context-group></trans-unit><trans-unit id="6538000881258492645" datatype="html">
       <source>Profile Setting</source>
       <target>ユーザー設定変更</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/common/headerfooter/header.component.ts</context><context context-type="linenumber">71</context></context-group></trans-unit><trans-unit id="6547873218643725223" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/common/headerfooter/header.component.ts</context><context context-type="linenumber">52</context></context-group></trans-unit><trans-unit id="6547873218643725223" datatype="html">
         <source>Invalid Password</source>
         <target>パスワードが正しくありません。</target>
-      <context-group purpose="location"><context context-type="sourcefile">src/app/common/auth/login/login.component.ts</context><context context-type="linenumber">137</context></context-group></trans-unit><trans-unit id="3041821449783026686" datatype="html">
-      <source>This UserID is not registered</source>
-      <target>このUserIDは登録されていません。</target>
-      <context-group purpose="location"><context context-type="sourcefile">src/app/common/auth/login/login.component.ts</context><context context-type="linenumber">149</context></context-group></trans-unit><trans-unit id="6366948662249962116" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/common/auth/login/login.component.ts</context><context context-type="linenumber">174</context></context-group></trans-unit><trans-unit id="4778530593976299949" datatype="html">
+        <source>This LoginID is not registered</source><target state="new">This LoginID is not registered</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/common/auth/login/login.component.ts</context>
+          <context context-type="linenumber">186</context>
+        </context-group>
+      </trans-unit><trans-unit id="6366948662249962116" datatype="html">
       <source>Password setting is complited</source>
       <target>パスワードの設定完了</target>
-      <context-group purpose="location"><context context-type="sourcefile">src/app/common/auth/login/login.component.ts</context><context context-type="linenumber">155</context></context-group></trans-unit><trans-unit id="5220061908438962578" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/common/auth/login/login.component.ts</context><context context-type="linenumber">192</context></context-group></trans-unit><trans-unit id="5220061908438962578" datatype="html">
       <source>Close this window, login from mail url that you have recieved</source>
       <target>ウインドウを閉じて、受信したメールのリンクからログインして下さい。</target>
-      <context-group purpose="location"><context context-type="sourcefile">src/app/common/auth/login/login.component.ts</context><context context-type="linenumber">156</context></context-group></trans-unit><trans-unit id="6913962786056699215" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/common/auth/login/login.component.ts</context><context context-type="linenumber">193</context></context-group></trans-unit><trans-unit id="6913962786056699215" datatype="html">
       <source>New password will be generated automatically, and login by mail link. (When you forget the password, or initial login)</source>
       <target>新しいパスワードを自動生成して, メールのリンクからログインします。 (パスワードを忘れた時や、初期ログイン時に利用します。)</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/common/auth/login/login.component.ts</context><context context-type="linenumber">191</context></context-group></trans-unit><trans-unit id="4817441175948877449" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/common/auth/login/login.component.ts</context><context context-type="linenumber">228</context></context-group></trans-unit><trans-unit id="4817441175948877449" datatype="html">
       <source>Confirm to Delete User</source>
       <target>ユーザー削除確認</target>
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/common/users/users.component.ts</context><context context-type="linenumber">72</context></context-group></trans-unit><trans-unit id="d7f9713ddf9ddee05e2a4aff0622e4b9b9f5d482" datatype="html">
+        <source>LoginID</source><target state="new">LoginID</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/common/users/users.component.ts</context>
-          <context context-type="linenumber">73</context>
+          <context context-type="sourcefile">src/app/common/users/users.dialog.html</context>
+          <context context-type="linenumber">7,8</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="4d13a9cd5ed3dcee0eab22cb25198d43886942be" datatype="html">
-        <source>Users</source>
-        <target>ユーザー管理</target>
-        
-      <context-group purpose="location"><context context-type="sourcefile">src/app/common/headerfooter/header.component.html</context><context context-type="linenumber">17</context></context-group></trans-unit><trans-unit id="532729251019091817" datatype="html">
+      <trans-unit id="532729251019091817" datatype="html">
       <source>Invalid Link URL</source>
       <target>無効なURLです。</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/common/auth/login/login.component.ts</context><context context-type="linenumber">61</context></context-group></trans-unit><trans-unit id="4311821701880365028" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/common/auth/login/login.component.ts</context><context context-type="linenumber">72</context></context-group></trans-unit><trans-unit id="4311821701880365028" datatype="html">
       <source>This URL is invalid&lt;BR>Select Mail Login again</source>
       <target>このURLは無効です。&lt;BR>再度 [Mail Login] ボタンからログインして下さい。</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/common/auth/login/login.component.ts</context><context context-type="linenumber">62</context></context-group></trans-unit><trans-unit id="7804884739861995066" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/common/auth/login/login.component.ts</context><context context-type="linenumber">73</context></context-group></trans-unit><trans-unit id="7804884739861995066" datatype="html">
       <source>Expire Link validation</source>
       <target>URLの有効期限切れ</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/common/auth/login/login.component.ts</context><context context-type="linenumber">69</context></context-group></trans-unit><trans-unit id="1662817842764314420" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/common/auth/login/login.component.ts</context><context context-type="linenumber">80</context></context-group></trans-unit><trans-unit id="1662817842764314420" datatype="html">
       <source>This URL is expired&lt;BR>Select Mail Login again.</source>
       <target>指定のURLは有効期限が過ぎています。&lt;BR>再度 [Mail Login] ボタンからログインして下さい。</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/common/auth/login/login.component.ts</context><context context-type="linenumber">70</context></context-group></trans-unit><trans-unit id="1100767613427016220" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/common/auth/login/login.component.ts</context><context context-type="linenumber">81</context></context-group></trans-unit><trans-unit id="1100767613427016220" datatype="html">
       <source>Save initial password</source>
       <target>新パスワード保存</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/common/auth/login/login.component.ts</context><context context-type="linenumber">81</context></context-group></trans-unit><trans-unit id="7109974531622038138" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/common/auth/login/login.component.ts</context><context context-type="linenumber">92</context></context-group></trans-unit><trans-unit id="7109974531622038138" datatype="html">
       <source>New Password is set. &lt;BR>Save correctly for the next time.</source>
       <target>新しいパスワードを生成しました。&lt;BR>次回のログインのために、正しく保存してください。</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/common/auth/login/login.component.ts</context><context context-type="linenumber">82</context></context-group></trans-unit><trans-unit id="4398334619590357601" datatype="html">
-      <source>Invalid UserID</source>
-      <target>無効なUserID</target>
-        
-      <context-group purpose="location"><context context-type="sourcefile">src/app/common/auth/login/login.component.ts</context><context context-type="linenumber">103</context></context-group></trans-unit><trans-unit id="3170190289121338568" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/common/auth/login/login.component.ts</context><context context-type="linenumber">93</context></context-group></trans-unit><trans-unit id="249750194196399731" datatype="html">
+        <source>Invalid LoginID</source><target state="new">Invalid LoginID</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/common/auth/login/login.component.ts</context>
+          <context context-type="linenumber">130</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/common/auth/login/login.component.ts</context>
+          <context context-type="linenumber">139</context>
+        </context-group>
+      </trans-unit><trans-unit id="3170190289121338568" datatype="html">
       <source>Expired Password</source>
       <target>パスワード期限切れ</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/common/auth/login/login.component.ts</context><context context-type="linenumber">114</context></context-group></trans-unit><trans-unit id="3498359309834705074" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/common/auth/login/login.component.ts</context><context context-type="linenumber">150</context></context-group></trans-unit><trans-unit id="3498359309834705074" datatype="html">
       <source>This password is no longer valid.&lt;BR>Reset password by Mail Login.</source>
       <target>このパスワードは有効期限が切れています。&lt;BR>再度 [Mail Login] ボタンからログインして下さい。</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/common/auth/login/login.component.ts</context><context context-type="linenumber">115</context></context-group></trans-unit><trans-unit id="2163189087384620514" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/common/auth/login/login.component.ts</context><context context-type="linenumber">151</context></context-group></trans-unit><trans-unit id="2163189087384620514" datatype="html">
       <source>Not Activate Account</source>
       <target>アカウント未活性</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/common/auth/login/login.component.ts</context><context context-type="linenumber">126</context></context-group></trans-unit><trans-unit id="4924043921585385099" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/common/auth/login/login.component.ts</context><context context-type="linenumber">162</context></context-group></trans-unit><trans-unit id="4924043921585385099" datatype="html">
       <source>This account is not activate.&lt;BR>Initialize by Mail Login.</source>
       <target>アカウントが初期化されていません。&lt;BR> [Mail Login] ボタンからログインして下さい。</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/common/auth/login/login.component.ts</context><context context-type="linenumber">127</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">src/app/common/auth/login/login.component.ts</context><context context-type="linenumber">163</context></context-group></trans-unit>
       <trans-unit id="6ad31729632818476420bb0f698d617436263675" datatype="html">
         <source>User Management</source>
         <target>ユーザー管理</target>
@@ -110,9 +106,8 @@
           <context context-type="sourcefile">src/app/common/users/users.component.html</context>
           <context context-type="linenumber">2</context>
         </context-group>
-      </trans-unit><trans-unit id="e978b6dbccee4a05d5fbf7a63cacaabecd60a826" datatype="html">
-      <source> UID </source>
-      <target> UID </target>
+      </trans-unit><trans-unit id="be916fd60cf654351155b284b0f38978c2a2a626" datatype="html">
+        <source> LoginID </source><target state="new"> LoginID </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/common/users/users.component.html</context>
           <context context-type="linenumber">20</context>
@@ -125,22 +120,21 @@
       <trans-unit id="52c1447c1ec9570a2a3025c7e566557b8d19ed92" datatype="html">
         <source> Role </source>
         <target> 役割 </target>
-      <context-group purpose="location"><context context-type="sourcefile">src/app/common/users/users.component.html</context><context context-type="linenumber">34</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">src/app/common/users/users.component.html</context><context context-type="linenumber">34</context></context-group></trans-unit><trans-unit id="6d1cddbe2f61020230280a0543a70e48e43d9832" datatype="html">
+        <source> Status </source><target state="new"> Status </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/common/users/users.component.html</context>
+          <context context-type="linenumber">40</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="7b9b2f201c1c8561ea92b224bc9b8f12c02addc0" datatype="html">
         <source> Password Update </source>
         <target> パスワード更新日 </target>
-      <context-group purpose="location"><context context-type="sourcefile">src/app/common/users/users.component.html</context><context context-type="linenumber">40</context></context-group></trans-unit><trans-unit id="c56546dbe776b9d24c3316f52c26efb8ab42dab2" datatype="html">
-      <source>UserID</source>
-      <target>ユーザーID</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/common/users/users.dialog.html</context>
-          <context context-type="linenumber">7</context>
-        </context-group>
-      </trans-unit><trans-unit id="cff1428d10d59d14e45edec3c735a27b5482db59" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/common/users/users.component.html</context><context context-type="linenumber">47</context></context-group></trans-unit><trans-unit id="cff1428d10d59d14e45edec3c735a27b5482db59" datatype="html">
       <source>Name</source>
       <target>氏名</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/app-modules/organization/organization.dialog.html</context><context context-type="linenumber">7</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/common/users/users.dialog.html</context><context context-type="linenumber">12</context></context-group></trans-unit><trans-unit id="ec984ab36f1da5f75ba43f9bd4b866ca9c7e6493" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/common/users/users.dialog.html</context><context context-type="linenumber">12</context></context-group></trans-unit><trans-unit id="ec984ab36f1da5f75ba43f9bd4b866ca9c7e6493" datatype="html">
       <source>Email Address</source>
       <target>メールアドレス</target>
         
@@ -161,11 +155,8 @@
       <trans-unit id="3696368088209543120" datatype="html">
         <source>Invalid Token</source>
         <target>トークンが正しくありません。</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/app-modules/ClientOrganization/TokenLoginAuth/login.component.ts</context>
-          <context context-type="linenumber">103</context>
-        </context-group>
-      </trans-unit>
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/common/auth/login/login.component.ts</context><context context-type="linenumber">172</context></context-group></trans-unit>
       
       
       

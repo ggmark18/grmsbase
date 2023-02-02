@@ -3,8 +3,8 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
 import config from '@grms/config.base';
-import { User, UserMixIn, targetName } from './dto.users';
-import { AuthType } from '../auth/dto.auth';
+import { User, UserMixIn, targetName } from './dto';
+import { AuthType } from '../auth/dto';
 import { PSUser } from './entities/users.entity';
 
 @Injectable()

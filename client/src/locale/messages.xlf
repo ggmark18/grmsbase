@@ -1,136 +1,128 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file source-language="en-US" datatype="plaintext" original="ng2.template">
-
-      <trans-unit id="4398334619590357601" datatype="html">
-        <source>Invalid UserID</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/app-modules/ClientOrganization/TokenLoginAuth/login.component.ts</context>
-          <context context-type="linenumber">84</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/app-modules/ClientOrganization/TokenLoginAuth/login.component.ts</context>
-          <context context-type="linenumber">94</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/common/auth/login/login.component.ts</context>
-          <context context-type="linenumber">103</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="3696368088209543120" datatype="html">
-        <source>Invalid Token</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/app-modules/ClientOrganization/TokenLoginAuth/login.component.ts</context>
-          <context context-type="linenumber">105</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="6547873218643725223" datatype="html">
-        <source>Invalid Password</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/app-modules/ClientOrganization/TokenLoginAuth/login.component.ts</context>
-          <context context-type="linenumber">107</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/common/auth/login/login.component.ts</context>
-          <context context-type="linenumber">138</context>
-        </context-group>
-      </trans-unit>
+    <body>
       <trans-unit id="532729251019091817" datatype="html">
         <source>Invalid Link URL</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/common/auth/login/login.component.ts</context>
-          <context context-type="linenumber">61</context>
+          <context context-type="linenumber">72,70</context>
         </context-group>
       </trans-unit>
       <trans-unit id="4311821701880365028" datatype="html">
         <source>This URL is invalid&lt;BR&gt;Select Mail Login again</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/common/auth/login/login.component.ts</context>
-          <context context-type="linenumber">62</context>
+          <context context-type="linenumber">73,70</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7804884739861995066" datatype="html">
         <source>Expire Link validation</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/common/auth/login/login.component.ts</context>
-          <context context-type="linenumber">69</context>
+          <context context-type="linenumber">80,78</context>
         </context-group>
       </trans-unit>
       <trans-unit id="1662817842764314420" datatype="html">
         <source>This URL is expired&lt;BR&gt;Select Mail Login again.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/common/auth/login/login.component.ts</context>
-          <context context-type="linenumber">70</context>
+          <context context-type="linenumber">81,78</context>
         </context-group>
       </trans-unit>
       <trans-unit id="1100767613427016220" datatype="html">
         <source>Save initial password</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/common/auth/login/login.component.ts</context>
-          <context context-type="linenumber">81</context>
+          <context context-type="linenumber">92,91</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7109974531622038138" datatype="html">
         <source>New Password is set. &lt;BR&gt;Save correctly for the next time.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/common/auth/login/login.component.ts</context>
-          <context context-type="linenumber">82</context>
+          <context context-type="linenumber">93,91</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="249750194196399731" datatype="html">
+        <source>Invalid LoginID</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/common/auth/login/login.component.ts</context>
+          <context context-type="linenumber">130</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/common/auth/login/login.component.ts</context>
+          <context context-type="linenumber">139</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3170190289121338568" datatype="html">
         <source>Expired Password</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/common/auth/login/login.component.ts</context>
-          <context context-type="linenumber">115</context>
+          <context context-type="linenumber">150,148</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3498359309834705074" datatype="html">
         <source>This password is no longer valid.&lt;BR&gt;Reset password by Mail Login.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/common/auth/login/login.component.ts</context>
-          <context context-type="linenumber">116</context>
+          <context context-type="linenumber">151,148</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2163189087384620514" datatype="html">
         <source>Not Activate Account</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/common/auth/login/login.component.ts</context>
-          <context context-type="linenumber">127</context>
+          <context context-type="linenumber">162,160</context>
         </context-group>
       </trans-unit>
       <trans-unit id="4924043921585385099" datatype="html">
         <source>This account is not activate.&lt;BR&gt;Initialize by Mail Login.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/common/auth/login/login.component.ts</context>
-          <context context-type="linenumber">128</context>
+          <context context-type="linenumber">163,160</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="3041821449783026686" datatype="html">
-        <source>This UserID is not registered</source>
+      <trans-unit id="3696368088209543120" datatype="html">
+        <source>Invalid Token</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/common/auth/login/login.component.ts</context>
-          <context context-type="linenumber">150</context>
+          <context context-type="linenumber">172</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6547873218643725223" datatype="html">
+        <source>Invalid Password</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/common/auth/login/login.component.ts</context>
+          <context context-type="linenumber">174</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4778530593976299949" datatype="html">
+        <source>This LoginID is not registered</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/common/auth/login/login.component.ts</context>
+          <context context-type="linenumber">186</context>
         </context-group>
       </trans-unit>
       <trans-unit id="6366948662249962116" datatype="html">
         <source>Password setting is complited</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/common/auth/login/login.component.ts</context>
-          <context context-type="linenumber">156</context>
+          <context context-type="linenumber">192,191</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5220061908438962578" datatype="html">
         <source>Close this window, login from mail url that you have recieved</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/common/auth/login/login.component.ts</context>
-          <context context-type="linenumber">157</context>
+          <context context-type="linenumber">193,191</context>
         </context-group>
       </trans-unit>
       <trans-unit id="6913962786056699215" datatype="html">
         <source>New password will be generated automatically, and login by mail link. (When you forget the password, or initial login)</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/common/auth/login/login.component.ts</context>
-          <context context-type="linenumber">192</context>
+          <context context-type="linenumber">228</context>
         </context-group>
       </trans-unit>
       <trans-unit id="9132258381115211530" datatype="html">
@@ -175,8 +167,8 @@
           <context context-type="linenumber">2</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="e978b6dbccee4a05d5fbf7a63cacaabecd60a826" datatype="html">
-        <source> UID </source>
+      <trans-unit id="be916fd60cf654351155b284b0f38978c2a2a626" datatype="html">
+        <source> LoginID </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/common/users/users.component.html</context>
           <context context-type="linenumber">20</context>
@@ -196,22 +188,29 @@
           <context context-type="linenumber">34</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="6d1cddbe2f61020230280a0543a70e48e43d9832" datatype="html">
+        <source> Status </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/common/users/users.component.html</context>
+          <context context-type="linenumber">40</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="7b9b2f201c1c8561ea92b224bc9b8f12c02addc0" datatype="html">
         <source> Password Update </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/common/users/users.component.html</context>
-          <context context-type="linenumber">40</context>
+          <context context-type="linenumber">47</context>
         </context-group>
       </trans-unit>
       <trans-unit id="4817441175948877449" datatype="html">
         <source>Confirm to Delete User</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/common/users/users.component.ts</context>
-          <context context-type="linenumber">74</context>
+          <context context-type="linenumber">72</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="c56546dbe776b9d24c3316f52c26efb8ab42dab2" datatype="html">
-        <source>UserID</source>
+      <trans-unit id="d7f9713ddf9ddee05e2a4aff0622e4b9b9f5d482" datatype="html">
+        <source>LoginID</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/common/users/users.dialog.html</context>
           <context context-type="linenumber">7,8</context>

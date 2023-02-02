@@ -1,4 +1,4 @@
-import { Injectable, Component } from '@angular/core';
+import { Injectable, Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
 import { HttpClient, HttpEvent, HttpInterceptor, HttpHandler, HttpRequest} from '@angular/common/http';
@@ -10,13 +10,12 @@ import { AuthServiceBase } from '@grms/common/auth/auth.service';
 import { AuthConfig, AuthParam } from '@grms/common/auth/auth.config';
 import { AuthGuardBase } from '@grms/common/auth/auth.guard-base';
 import { AuthHeaderInterceptorBase } from '@grms/common/auth/header.interceptor';
-import { LoginComponentBase } from '@grms/common/auth/login/login.component';
-import { LogoutComponentBase } from '@grms/common/auth/login/logout.component';
-import { PasswordComponentBase } from '@grms/common/auth/login/password.component';
+import { LoginComponentBase, HeaderParts } from '@grms/common/auth/login/login.component';
+import { PasswordComponentBase } from '@grms/common/auth';
 import { SocketService } from '@grms/common/base/socket.service';
 import { AppRootLayout } from '@grms/app-root.layout';
-import { AuthRole } from '@api-dto/common/auth/dto.auth';
-import { User } from '@api-dto/common/users/dto.users';
+import { AuthRole } from '@api-dto/common/auth/dto';
+import { User } from '@api-dto/common/users/dto';
 import { setupLayoutForUsers } from './module';
 
 @Injectable()
@@ -98,52 +97,35 @@ export class AuthGuardAdminUsers extends AuthGuardUsers {
 
 @Component({
     selector: 'users-login',
-    templateUrl: '../../common/auth/login/login.component.html',
+    templateUrl: '../../common/auth/login/login.header.html',
     styleUrls: ['../../common/auth/login/login.component.scss']
 })
-export class UsersLoginComponent extends LoginComponentBase {
-    constructor( protected auth: UsersAuthService,
-	             protected formBuilder: UntypedFormBuilder,
-                 protected route: ActivatedRoute,
-	             protected dialog: MatDialog,
-	             protected router: Router,
-                 protected location: Location){
-        super(formBuilder, route, dialog, router, location);
-        this.authService = auth;
-        this._title = 'GRMS Base';
-        this._icon = 'app/app-modules/assets/GSRs.png';
+export class UsersLoginComponent {
+    parts: HeaderParts = {
+        title: 'GRMS Base',
+        icon: 'app/app-modules/assets/GSRs.png'
     }
+    constructor( protected auth: UsersAuthService ) {}
 }
 
 @Component({
     selector: 'users-logout',
     template: '',
-    styles: ['']
 })
-export class UsersLogoutComponent extends LogoutComponentBase {
+export class UsersLogoutComponent implements OnInit {
     constructor(protected auth: UsersAuthService,
                 protected layout: AppRootLayout,
-                protected router: Router) {
-        super(layout,router);
-        this.authService = auth;
-    }
+                protected router: Router) {}
+    ngOnInit() { this.auth.logout(this.layout, this.router); }
 }
 
 @Component({
     selector: 'users-password',
-    templateUrl: '../../common/auth/login/password.component.html',
-    styleUrls: ['../../common/auth/login/login.component.scss']
+    template: PasswordComponentBase.selector('auth')
 })
-export class UsersPasswordComponent extends PasswordComponentBase {
-    constructor( protected auth: UsersAuthService,
-                 protected layout: AppRootLayout, 
-	             protected formBuilder: UntypedFormBuilder,
-                 protected route: ActivatedRoute,
-	             protected dialog: MatDialog,
-	             protected router: Router){
-        super(layout, formBuilder, route, dialog, router);
-        this.authService = auth;
-    }
+export class UsersPasswordComponent {
+    constructor( protected auth: UsersAuthService ) {}
+
 }
 
 

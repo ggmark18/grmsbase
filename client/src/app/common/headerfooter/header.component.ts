@@ -4,11 +4,9 @@ import { Router } from '@angular/router';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { first } from 'rxjs/operators';
-
-import { AuthUser } from '@api-dto/common/auth/dto.auth';
-import { AppRootLayout, LayoutConfig } from '../../app-root.layout';
+import { AuthUser } from '@api-dto/common/auth/dto';
+import { AppRootLayout, LayoutConfig } from '@grms/app-root.layout';
 import { isAdmin } from '../auth/auth.service';
-import { ErrorDialog } from '../dialog/error.dialog';
 
 @Component({
     selector: 'app-header',

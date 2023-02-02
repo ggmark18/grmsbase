@@ -3,13 +3,13 @@ import { Injectable } from '@angular/core';
 export interface AuthParam {
     tokenKey: string
 
-//    targetName: string
-
     loginAPI: string
     loginUserAPI: string
     typeCheckAPI: string
     signupCheckAPI: string
     changePasswordAPI: string
+    preloginAPI?: string
+    signupAPI?: string
     mailloginAPI?: string
     decriptAPI?: string
     TwoFactorLoginAPI?: string

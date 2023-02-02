@@ -2,11 +2,12 @@ import { Component, Inject, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { FormControl, Validators, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA  } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
-import { UsersService } from './users.service';
+import { UsersService } from './service';
 import { ConfirmDialog } from '../dialog/confirm.dialog';
 import { DisplayMessage } from '../base/messages';
-import { User, UserServiceError } from '@api-dto/common/users/dto.users';
-import { AuthRole } from '@api-dto/common/auth/dto.auth';
+import { AuthRole } from '@api-dto/common/auth/dto';
+import { User, UserServiceError } from '@api-dto/common/users/dto';
+
 
 import * as _ from 'lodash';
 

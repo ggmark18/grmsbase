@@ -1,5 +1,10 @@
 <form [formGroup]="profileForm">
   <mat-form-field *ngFor="let attribute of attrs">
-    <input matInput [placeholder]="attribute.title" [name]="attribute.key" [formControlName]="attribute.key">
+    <input matInput [placeholder]="attribute.title" [name]="attribute.key" [formControlName]="attribute.key" *ngIf="isStringField(attribute)">
+    <input matInput [placeholder]="attribute.title" [name]="attribute.key" [formControlName]="attribute.key" [matDatepicker]="picker" *ngIf="isDateField(attribute)">
+    <mat-datepicker-toggle matSuffix [for]="picker" *ngIf="isDateField(attribute)"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+    <span matPrefix *ngIf="attribute.prefix">{{attribute.prefix}}</span>
+    <span matSuffix *ngIf="attribute.postfix">{{attribute.postfix}}</span>
   </mat-form-field>
 </form>

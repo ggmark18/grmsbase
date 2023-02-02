@@ -1,5 +1,4 @@
-$custom-file-text: (); // --> Warning: 1 rules skipped due to selector errors: .custom-file-input:lang(en) ~ .custom-file-label -> unmatched pseudo-class :lang
-@import '~bootstrap/scss/bootstrap';
+@import 'bootstrap/scss/bootstrap';
 @include media-breakpoint-up(xs) {
 }
 @include media-breakpoint-down(xs) {
@@ -78,7 +77,6 @@ footer {
     color: #777;
     text-align: center;
     padding: 20px 0;
-    margin-top: 70px;
     border-top: 1px solid #E5E5E5;
     font-size: 12px;
     a {

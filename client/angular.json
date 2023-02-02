@@ -38,6 +38,9 @@
                 "./node_modules/bootstrap/dist/css/bootstrap.min.css",
                 "./node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
                 "./node_modules/@fortawesome/fontawesome-free/css/all.css",
+                "./node_modules/ngx-spinner/animations/ball-atom.css",
+                "./node_modules/ngx-spinner/animations/ball-running-dots.css",
+                "./node_modules/ngx-spinner/animations/ball-beat.css",
                 "src/assets/theme/bootstrap.min.css",
                 "src/styles.scss"
             ],
@@ -57,7 +60,7 @@
             ]
           },
           "configurations": {
-              "production": {
+            "production": {
               "localize": ["ja","en"],
               "optimization": true,
               "outputHashing": "all",
@@ -94,7 +97,8 @@
                 }
               ]
             },
-            "dev": {
+              "dev": {
+              "sourceMap": true,
               "localize": ["ja"],
               "fileReplacements": [
                 {
@@ -110,7 +114,7 @@
           "options": {
               "browserTarget": "IMBase:build",
           },
-          "configurations": {
+            "configurations": {
             "production": {
               "browserTarget": "IMBase:build:production"
             },
@@ -118,7 +122,8 @@
               "browserTarget": "IMBase:build:ja"
             },
             "dev": {
-              "browserTarget": "IMBase:build:dev",
+                "browserTarget": "IMBase:build:dev",
+                
             },
             "dev-en": {
               "browserTarget": "IMBase:build:dev-en",

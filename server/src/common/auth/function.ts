@@ -1,4 +1,4 @@
-import { AuthUser, AuthInfo, AuthStatus } from './dto.auth';
+import { AuthUser, AuthInfo, AuthStatus } from './dto';
 import { authenticator } from 'otplib';
 import * as crypto from 'crypto';
 

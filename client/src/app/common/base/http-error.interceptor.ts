@@ -13,7 +13,7 @@ export class CatchErrorInterceptor implements HttpInterceptor {
 	    return next.handle(request).pipe(
             catchError((response: HttpErrorResponse) => {
                 if ( response.error ) {
-                    if( environment.debug ) console.log(response.error);
+                    if( environment.debug ) console.log(`Reponse Error:${JSON.stringify(response)}`);
                     if( response.error.type ) {
                         if( response.error.type == "InternalError") {
                             this.dialog.open(ErrorDialog, {

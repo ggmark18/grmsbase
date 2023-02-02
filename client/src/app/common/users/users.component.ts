@@ -6,11 +6,11 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Subscription, NEVER } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 
-import { AuthRole } from '@api-dto/common/auth/dto.auth';
-import { User, Entities } from '@api-dto/common/users/dto.users';
-import { ConfirmDialog, CloseStatus } from '@grms/common/dialog/confirm.dialog';
+import { AuthRole } from '@api-dto/common/auth/dto';
+import { User, Entities } from '@api-dto/common/users/dto';
+import { ConfirmDialog, CloseStatus } from '@grms/common/dialog';
 import { SocketService } from '@grms/common/base/socket.service';
-import { UsersService } from './users.service';
+import { UsersService } from './service';
 
 import { UsersDialog } from './users.dialog';
 

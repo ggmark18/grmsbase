@@ -9,11 +9,12 @@ import { AppMaterialModule } from '@grms/app.material';
 import { SocketService } from '@grms/common/base/socket.service';
 
 import { AppRootLayout } from '@grms/app-root.layout';
-import { UsersService } from '@grms/common/users/users.service';
+import { AuthModule } from '@grms/common/auth';
+import { UsersService } from '@grms/common/users/service';
 import { UsersComponent } from '@grms/common/users/users.component';
 import { UsersDialog } from '@grms/common/users/users.dialog';
-import { AuthRole } from '@api-dto/common/auth/dto.auth';
-import { User } from '@api-dto/common/users/dto.users';
+import { AuthRole } from '@api-dto/common/auth/dto';
+import { User } from '@api-dto/common/users/dto';
 
 // Auth Elements
 import { UsersLoginComponent,
@@ -23,7 +24,7 @@ import { UsersLoginComponent,
          UsersAuthConfig,
          UsersAuthInterceptor,
          AuthGuardAdminUsers,
-         AuthGuardUsers } from './users.auth';
+         AuthGuardUsers } from './auth';
 
 const routes: Routes = [
     {
@@ -67,6 +68,7 @@ export function setupLayoutForUsers(layout: AppRootLayout, user: User) {
         AppMaterialModule,
         FormsModule,
         ReactiveFormsModule,
+        AuthModule
     ],
     providers: [
         SocketService,

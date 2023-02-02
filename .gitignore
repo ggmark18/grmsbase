@@ -13,4 +13,4 @@ uploads
 .sass-cache
 *.swp
 dist
-client/.angluar
+.angluar/cache

@@ -1,0 +1,21 @@
+<mat-card class="container digest-card">
+  <div class="row">
+    <div class="col-lg-5">
+      <div class="thumbnail-div">
+        <div [innerHTML]="_thumbnail"></div>
+      </div>
+    </div>
+    <div class="col-lg-7 contents">
+      <div class="title">{{_post?.title}}</div>
+      <div class="paragraph">
+        {{paragraphContent}}
+      </div>
+      <div>
+        <div class="date"><i class="far fa-clock"></i>&nbsp;{{_post.updatedAt | date:'yyyy年MM月dd日 HH:mm'}}</div>
+        <button class="btn btn-default btn-outline-secondary btn-sm mr-3 form-control" (click)="readContinue()">
+          続きを読む <i class="fas fa-chevron-right"></i></button>
+      </div>
+    </div>
+  </div>
+</mat-card>
+

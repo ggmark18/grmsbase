@@ -1,0 +1,22 @@
+<div class="modal-header">
+  <h4>
+      <div class="mt-3" style="display:flex; align-items :center">
+        &nbsp;<i [class]="titleIcon"></i>&nbsp;&nbsp;{{title}}
+      </div>
+  </h4>
+</div> <div class="modal-body">
+  <div *ngIf="!files.length" appDrag (files)="filesDropped($event)" >
+    <div>&nbsp;</div>
+      <img [src]="get_url" [style]="imageStyle"/>
+    <div class="align-center">Drop your new file here!</div>
+  </div>
+  <div *ngFor="let file of files">
+    <img *ngIf="file" [src]="file.url" [style]="imageStyle">
+  </div>
+</div>
+<div class="modal-footer row" >
+  <div class="col text-center prof-image">
+    <button class="btn btn-cancel btn-sm mr-4" mat-dialog-close ></button>
+    <button [disabled]="!files.length" class="btn btn-save btn-sm" (click)="fileUpload()"></button>
+  </div>
+</div>

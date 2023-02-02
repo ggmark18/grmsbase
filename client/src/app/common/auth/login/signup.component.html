@@ -1,0 +1,12 @@
+<div class="login">
+  <P> Wellcome Community Site!
+  <P>パスワードを設定してサインアップしてください。</P>
+  <grms-password-change-form></grms-password-change-form>
+  <div class="form-bottom">
+    <button class="btn btn-lg mb-3" [disabled]="!passwordForm?.isValid" (click)="signup()">
+	  <i class="fas fa-exchange-alt"></i> サインアップ
+    </button>
+  </div>
+</div>
+
+

@@ -1,10 +1,10 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn,AfterLoad, BeforeUpdate, Index } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn,AfterLoad, BeforeInsert, BeforeUpdate, Index } from 'typeorm';
 import { Contains, IsInt, Length, IsEmail, IsFQDN, IsDate, Min, Max } from 'class-validator';
 import * as crypto from 'crypto';
 
-import { AuthInfo, AuthRole, AuthType} from '../dto.auth';
+import { AuthInfo, AuthRole, AuthType} from '../dto';
 import { PSAuthTarget } from './authTargets.entity';
-import { encryptPassword, makeSalt } from '../auth.function';
+import { encryptPassword, makeSalt } from '../function';
 
 @Entity('AuthInfo')
 export class PSAuthInfo implements AuthInfo {
@@ -41,6 +41,7 @@ export class PSAuthInfo implements AuthInfo {
     private loadTempPassword(): void {
         this.tempPassword = this.password;
     }
+    @BeforeInsert()
     @BeforeUpdate()
     private changePasswordHook() {
         if (this.tempPassword !== encryptPassword(this.password, this.salt)

@@ -1,0 +1,93 @@
+.digest-card {
+  max-width: 670px;
+  margin-bottom: 10px;
+
+  img {
+      width: 100%;
+  }
+  .thumbnail-div {
+      width: 100%;
+  }
+  .title {
+      font-size: 20px;
+      font-weight: 500;
+      padding-bottom: 8px;
+  }
+  .contents {
+      padding: 0 20px 0 30px;
+      font-weight: 200;
+      font-size: 13px;
+  }
+  .date {
+      float: left;
+      padding-top: 7px;
+      font-size: 12px;
+      font-weight: 200;
+  }
+  button {
+      float: right;
+      width: 100px;
+      margin-right: 0;
+      font-size: 11px;
+  }
+  .image {
+      position: relative;
+      overflow: hidden;
+      height: 140px;
+  }
+  .paragraph {
+      height: 89px;
+  }
+  .video {
+      position: relative;
+      width:100%; /* 横幅は100%にしておく(ここを変えたい場合は実装コード2の方法を確認してください) */
+      height:0; /* 高さは0にしておく(padding-topで高さを指定するため) */
+      padding-top: 56.25%; /* 高さを指定(16:9) */
+  }
+
+  /* YouTube埋め込み用のiframe */
+  .video iframe{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+  }
+}
+
+.post-detail {
+    H2 {
+        padding-top: 10px;
+    }
+    .date {
+        font-size: 14px;
+        font-weight: 300;
+    }
+    .paragraph {
+        font-size: 16px;
+    }
+    .image {
+        padding: 20px;
+    }
+    .writer {
+        text-align: right;
+        margin-right: 30px;
+        font-size: 14px;
+        font-weight: 300;
+    }
+    .video {
+        position: relative;
+        width:100%; /* 横幅は100%にしておく(ここを変えたい場合は実装コード2の方法を確認してください) */
+        height:0; /* 高さは0にしておく(padding-topで高さを指定するため) */
+        padding-top: 56.25%; /* 高さを指定(16:9) */
+    }
+
+    /* YouTube埋め込み用のiframe */
+    .video iframe{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}

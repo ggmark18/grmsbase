@@ -2,7 +2,7 @@
     "collection": "@nestjs/schematics",
     "sourceRoot": "src",
     "compilerOptions": {
-        "assets": ["assets/fonts/*","app-modules/assets/*"],
+        "assets": ["assets/fonts/*","assets/images/*","app-modules/assets/*/*"],
         "watchAssets": true
     }
 }

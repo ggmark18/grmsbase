@@ -1,4 +1,4 @@
-import { Injectable, BadRequestException, HttpException, HttpStatus } from '@nestjs/common';
+import { Injectable, NotFoundException, BadRequestException, HttpException, HttpStatus } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
@@ -9,21 +9,25 @@ import * as CryptoJS from "crypto-js";
 import * as QRCode from 'qrcode';
 import { sendmail } from '../tools/mailtool';
 
-import { AuthUser, AuthInfo, AuthType, DecodeInfo, Payload, AuthStatus, LoginInfo, LoginError } from './dto.auth';
+import { AuthUser, AuthInfo, AuthType, DecodeInfo, SignupInfo, Payload, AuthStatus, LoginInfo, LoginError } from './dto';
 import { PSAuthInfo } from './entities/authInfo.entity';
 import { PSAuthTarget } from './entities/authTargets.entity';
 import { toTimeString, toDate, calcDays } from '../tools/formats/date';
 import { generateTFAuthSecret,
+         validatePassword,
          isTFAuthCodeValid,
-         makeSalt } from './auth.function';
+         makeSalt } from './function';
 
 @Injectable()
 export class AuthService {
     constructor(
         private jwtService: JwtService,
         private config: ConfigService,
+        @InjectRepository(PSAuthTarget,'sqldb')
+        private readonly targetRepository: Repository<PSAuthTarget>,
         @InjectRepository(PSAuthInfo,'sqldb')
         private readonly authRepository: Repository<PSAuthInfo>,
+
     ) {}
 
     async passwordResetByMail(user: AuthUser, auth: AuthInfo, loginid: string, locale: string) {
@@ -79,6 +83,12 @@ export class AuthService {
         return AuthStatus.INITIAL;
     }
 
+    async encodeSignupInfo(user: AuthUser, auth: AuthInfo) {
+        let info :SignupInfo = { password: auth.password, loginid: user.email };
+        let infoString = JSON.stringify(info);
+        return encodeURIComponent(CryptoJS.AES.encrypt(infoString, auth.salt).toString());
+    }
+
     async decodeInfo(auth: PSAuthInfo, id: string, key: string) : Promise<DecodeInfo> {
         if( !auth || !auth.initial ) throw new BadRequestException();
         let bytes = CryptoJS.AES.decrypt(key, auth.salt);
@@ -96,6 +106,14 @@ export class AuthService {
         return { salt: auth.salt, loginid: id }
     }
 
+    async prelogin(user, auth, encripted) : Promise<LoginInfo> {
+        let bytes = CryptoJS.AES.decrypt(encripted, auth.salt);
+        let info = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+        if( auth.password != info.password ) {
+            throw new HttpException(LoginError.BADTOKEN,HttpStatus.UNAUTHORIZED);
+        }
+        return { access_token: this.jwtService.sign(this.makePayload(user,auth)) };
+    }
     async login(user: AuthUser, auth: AuthInfo) : Promise<LoginInfo> {
         return { access_token: this.jwtService.sign(this.makePayload(user,auth)) };
     }
@@ -123,9 +141,11 @@ export class AuthService {
         await this.authRepository.save(auth);
     }
 
-    async changePassword(auth: AuthInfo, password: string ) : Promise<void> {
+    async changePassword(auth: AuthInfo, password: string, initial: boolean = false) : Promise<void> {
+        console.log(password);
         auth.password = password;
         auth.passwordUpdated = new Date();
+        auth.initial = initial;
         await this.authRepository.save(auth);
     }
 
@@ -138,6 +158,15 @@ export class AuthService {
         auth.authToken = secret;
         await this.authRepository.save(auth);
         return QRCode.toDataURL(otpAuthUrl);
+    }
+
+    async createAuthInfo( targetName, password ) : Promise<PSAuthInfo> {
+        let target = await this.targetRepository.findOne({
+            where: { name: targetName }
+        });
+        if( !target ) throw new NotFoundException(`AuthTarget:${targetName}`);
+        let authInfo = await this.authRepository.create({ target: target, password: password, passwordUpdated: new Date(), authType: AuthType.Password, initial: true});
+        return await this.authRepository.save(authInfo);
     }
 
 }    

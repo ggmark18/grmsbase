@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
-import { User } from '@api-dto/common/users/dto.users';
-import { AuthRole } from '@api-dto/common/auth/dto.auth';
+import { User } from '@api-dto/common/users/dto';
+import { AuthRole } from '@api-dto/common/auth/dto';
 
 @Injectable()
 export class UsersService {

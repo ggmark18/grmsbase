@@ -47,13 +47,18 @@ body {
     .container.page {
         padding:50px;
     }
+    .main-col {
+        max-width: 400px;
+    }
 }
 @media (max-width: 991.95px) {
     .container.page {
         padding:10px;
     }
+    .main-col {
+        display: none;
+    }
 }
-
 
 .form-control {
   font-family: 'Helvetica Neue', sans-serif;
@@ -367,6 +372,4 @@ body {
     }
 
 }
-
-
 

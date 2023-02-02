@@ -5,10 +5,9 @@ import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
 
 import configuration from '@grms/config.base';
-import { AuthService } from '@grms/common/auth/auth.service';
-import { AuthEntities } from '@grms/common/auth/entities';
-import { UsersController } from '@grms/common/users/users.controller';
-import { UsersService } from '@grms/common/users/users.service';
+import { AuthService, AuthEntities } from '@grms/common/auth';
+import { UsersController } from '@grms/common/users/controller';
+import { UsersService } from '@grms/common/users/service';
 import { LocalStrategy } from '@grms/common/users/authGuards/local.strategy';
 import { JwtStrategy } from '@grms/common/users/authGuards/jwt.strategy';
 

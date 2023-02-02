@@ -1,0 +1,24 @@
+.align-center {
+    color: white;
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+}
+
+.prof-image {
+    .btn-save::before {
+        content: '\f093';
+    }
+    .btn-save::after {
+        content: " Upload";
+    }
+}
+
+/* for Error Dialog */
+.fas.fa-exclamation-triangle {
+    color: orange;
+}
+.fas.fa-bomb {
+    color: red;
+}
+

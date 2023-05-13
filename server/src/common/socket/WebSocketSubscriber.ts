@@ -14,7 +14,6 @@ export class WebSocketSubscriber<T> implements EntitySubscriberInterface<T> {
         @InjectConnection('sqldb')
         private connection: Connection ) {
         connection.subscribers.push(this);
-
     }
 
     get entityName() { return undefined; }

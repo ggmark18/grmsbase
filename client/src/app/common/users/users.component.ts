@@ -1,15 +1,15 @@
 import { Component, OnInit, OnDestroy, Inject, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators, ValidationErrors } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
+import { MatLegacyPaginator as MatPaginator } from '@angular/material/legacy-paginator';
+import { MatLegacyTableDataSource as MatTableDataSource } from '@angular/material/legacy-table';
 import { Subscription, NEVER } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 
 import { AuthRole } from '@api-dto/common/auth/dto';
 import { User, Entities } from '@api-dto/common/users/dto';
 import { ConfirmDialog, CloseStatus } from '@grms/common/dialog';
-import { SocketService } from '@grms/common/base/socket.service';
+import { SocketService } from '@grms/common/socket/service';
 import { UsersService } from './service';
 
 import { UsersDialog } from './users.dialog';

@@ -1,5 +1,9 @@
 import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest} from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Pipe, PipeTransform } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser'
+import { Observable } from 'rxjs'
+import { map } from 'rxjs/operators'
 
 export class AuthHeaderInterceptorBase implements HttpInterceptor {
 
@@ -19,5 +23,15 @@ export class AuthHeaderInterceptorBase implements HttpInterceptor {
         } else {
             return next.handle(req);
         }
+    }
+}
+
+@Pipe({ name: 'secure'})
+export class SecurePipe implements PipeTransform {
+    constructor(private http: HttpClient, private sanitizer: DomSanitizer) { }
+    
+    transform(url): Observable<SafeUrl> {
+        return this.http.get(url, { responseType: 'blob' }).pipe(
+            map(blob => this.sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(blob))));
     }
 }

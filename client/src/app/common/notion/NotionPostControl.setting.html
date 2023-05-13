@@ -1,13 +1,13 @@
 <div class="container">
-  <div class="row">
-    <div class="col col-label"><div class="form-label">{{postControl.title}}</div></div>
-    <div class="col col-field ">
+  <div class="row" *ngFor="let pcp of postControlPages">
+    <div class="col col-label"><div class="form-label">{{pcp.control.title}}</div></div>
+    <div class="col col-field " *ngIf="pcp.mypage">
       <div class="input-group">
-        <input class="form-control" formControlName="pageid">
+        <input class="form-control" [(ngModel)]="pcp.mypage.pageid" readonly>
       </div>
     </div>
-    <div class="col col-button">
-      <button class="btn btn-default btn-new btn-sm mr-3 form-control" (click)="createPostPage()"></button>
+    <div class="col col-button" *ngIf="!pcp.mypage">
+      <button class="btn btn-default btn-new btn-sm mr-3 form-control" (click)="createPostPage(pcp.control)"></button>
     </div>
   </div>
 </div>

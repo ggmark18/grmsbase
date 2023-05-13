@@ -1,11 +1,18 @@
 import { Component, Inject, ViewChild, Input, Output, EventEmitter } from '@angular/core';
 import { FormControl, Validators, FormBuilder, FormGroup, FormArray } from '@angular/forms'
-import { MatDialog, MatDialogRef } from '@angular/material/dialog'
 import { Observable } from 'rxjs'
 import { NgxSpinnerService } from "ngx-spinner"
 
+import { AppRootLayout } from '@grms/app-root.layout';
 import { NotionServiceBase } from '.'
 import { NotionDashboard, NotionPostControl, NotionPage ,NotionDashboardPageOperation} from '@api-dto/common/notion/dto'
+
+import _ from 'lodash'
+
+interface PostControlPage {
+    control: NotionPostControl
+    mypage?: NotionPage
+}
 
 @Component({
     selector: 'notion-postcontrol-setting',
@@ -13,14 +20,16 @@ import { NotionDashboard, NotionPostControl, NotionPage ,NotionDashboardPageOper
     styleUrls: ['../profile/profile.scss']
 })
 export class NotionPostControlSetting {
-    @Input() set control(value: NotionPostControl) {
-        this.postControl = value
+    @Input() set controls(value: NotionPostControl[]) {
+        let pcps = []
+        for (let control of value) pcps.push({ control, mypage:undefined })
+        this.postControlPages = pcps
+        console.log('postControlPages', this.postControlPages)
         if(this._dashboard ) this.setupPage()
     }
     @Input() set dashboard(value: NotionDashboard) {
         this._dashboard = value
-        this.notionForm.get('secret').setValue(this._dashboard.secret);
-        if( this.postControl ) this.setupPage()
+        if( this.postControlPages ) this.setupPage()
     }
     @Input() set service(value: NotionServiceBase) {
         this.notionService = value
@@ -29,52 +38,35 @@ export class NotionPostControlSetting {
     notionService: NotionServiceBase
                          
     _dashboard: NotionDashboard = undefined
-    postControl: NotionPostControl = undefined
+    postControlPages: PostControlPage[] = undefined
     page: NotionPage = undefined
                          
-    notionForm: FormGroup
-    validPageId = false;
     spinnerMessage;
 
-    constructor(private fb: FormBuilder,
-                private spinner: NgxSpinnerService,
-                private dialog: MatDialog) {
-        this.notionForm = this.fb.group({
-            secret: [''],
-            pageid: [''],
-        });
+    constructor(public layout: AppRootLayout,
+                private fb: FormBuilder,
+                private spinner: NgxSpinnerService ){
     }
 
     setupPage() {
-        for( let dp  of this._dashboard.pages ) {
-            for( let cp of this.postControl.pages ) {
-                if( dp._id == cp._id ) {
-                    this.page = dp
-                    this.notionForm.get('pageid').setValue(this.page.pageid)
-                    this.validPageId = true
-                    break
-                }
+        for( let pcp of this.postControlPages ) {
+            for( let cpage of pcp.control.pages ) {
+                pcp.mypage = _.find(this._dashboard.pages, (page) => page._id == cpage._id)
+                if( pcp.mypage ) break
             }
-            if( this.page ) break
         }
     }
 
-    checkStatus(pageid) {
-        this.validPageId = false
-        if( ( pageid.match( new RegExp( "-", "g" ) ) || [] ).length == 4  ){
-            this.validPageId = true
-        }
-    }
-
-    createPostPage() {
-        this.spinnerMessage = 'Creating Community Post ...';
+    createPostPage(control: NotionPostControl) {
+        this.spinnerMessage = `Creating ${control.title} Notion Page...`;
         this.spinner.show();
         this.notionService.dashboardPage({
             dashboardid: this._dashboard._id,
-            controlid: this.postControl._id,
+            controlid: control._id,
             operation: NotionDashboardPageOperation.CREATE
         }).subscribe( res => {
             this.spinner.hide();
+            this.layout.subscribeLayoutConfig()
         },error => {
             console.log(error);
             this.spinner.hide();

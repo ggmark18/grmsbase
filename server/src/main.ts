@@ -3,7 +3,7 @@ import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { SMTPServer } from 'smtp-server';
 
 import { AppBase } from './app.base';
-import { SocketIoAdapter } from './common/socket/socket-io.adapter';
+//import { SocketIoAdapter } from './common/socket/socket-io.adapter';
 import { GSRsExceptionsFilter } from './common/errors/GSRsExceptionsFilter';
 
 import base_config from './config.base';

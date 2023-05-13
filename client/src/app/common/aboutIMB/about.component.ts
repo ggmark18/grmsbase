@@ -10,14 +10,14 @@ export class AboutComponent {
     stacks = [
         {
             name: "Angular",
-            version: "v14.1.0",
+            version: "v15.1.2",
             logo: "https://angular.io/assets/images/logos/angular/angular.svg",
             link: "https://angular.io",
             doc: "https://angular.io/docs",
             explain: "Angular is an application design framework and development platform for creating efficient and sophisticated single-page apps."
         },{
             name: "ngx-Bootstrap",
-            version: "v8.0.0",
+            version: "v10.2.0",
             logo: "assets/images/ngx-bootstrap-logo.svg",
             link: "https://valor-software.com/ngx-bootstrap/#/",
             explain: "ngx-bootstrap is an Open Source (MIT Licensed) independent project with ongoing development made possible thanks to the support of our awesome backers.",
@@ -32,7 +32,7 @@ export class AboutComponent {
             doc: "https://getbootstrap.com/docs/4.5/getting-started/introduction/"
         },{
             name: "Angular Material",
-            version: "v14.0.4",
+            version: "v15.1.2",
             logo: "assets/images/material.png",
             link: "https://material.angular.io",
             explain: "Material design components for Angular. Internationalized and accessible components for everyone. Straightforward APIs with consistent cross platform behaviour.",

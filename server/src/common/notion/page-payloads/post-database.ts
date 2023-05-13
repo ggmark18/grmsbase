@@ -1,4 +1,4 @@
-export function payload(parentPageid) {
+export function payload(parentPageid, title) {
     return {
         parent: {
             type: "page_id",
@@ -11,7 +11,7 @@ export function payload(parentPageid) {
         title: [{
             type: "text",
             text: {
-                content: "メインポスト",
+                content: title,
                 link: null
             }
         }],
@@ -21,16 +21,21 @@ export function payload(parentPageid) {
                 options: [
                     {
                         name: "作成",
-                        color: "brown"
+                        color: "gray"
                     },
                     {
-                        name: "承認",
-                        color: "green"
+                        name: "拒絶",
+                        color: "orange"
                     },
                     {
                         name: "公開",
-                        color: "blue"
+                        color: "green"
+                    },
+                    {
+                        name: "LIVE",
+                        color: "purple"
                     }
+
                 ]
             }
                           },

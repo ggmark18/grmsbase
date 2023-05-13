@@ -4,7 +4,6 @@ import { UntypedFormGroup, UntypedFormControl, Validators, UntypedFormBuilder, V
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 import { AppRootLayout } from '@grms/app-root.layout';
-import { ErrorDialog } from '@grms/common/dialog/error.dialog';
 
 import { AuthServiceBase} from '../auth.service';
 import { PasswordChangeForm } from './password.form';
@@ -42,11 +41,7 @@ export class PasswordComponentBase {
     change() : void {
         this.authService.changePassword(this.passwordForm?.value).subscribe( ok => {
             this.router.navigate([this.layout.logoutURL()]);
-        }, error => {
-            this.dialog.open(ErrorDialog, {
-				data: error,
-			});
-        });
+        })
     }
 
     get changeButtonClass() {

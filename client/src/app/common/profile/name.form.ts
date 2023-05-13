@@ -1,6 +1,5 @@
 import { Component, Inject, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { FormControl, Validators, FormBuilder, FormGroup } from '@angular/forms';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA  } from '@angular/material/dialog';
 import * as AutoKana from 'vanilla-autokana';
 
 @Component({

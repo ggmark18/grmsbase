@@ -1,33 +1,35 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light" *ngIf="layoutConfig$ | async as header">
+<nav class="navbar navbar-expand-lg navbar-light" *ngIf="layoutConfig$ | async as header">
   <a [routerLink]="[header?.homeRoot]" class="logo">
     <img [src]="header?.logo" />&nbsp;<div class="title">{{title.getTitle()}}</div>
   </a>
-  <div class="collapse navbar-collapse" id="navbarText" *ngIf="header?.user" >
+  <button mat-stroked-button [matMenuTriggerFor]="menu" class="barger-menu d-lg-none"><i class="fas fa-bars"></i></button>
+  <div class="collapse navbar-collapse" id="navbarNav" *ngIf="header?.user" >
     <ul class="navbar-nav mr-auto">
       <li *ngFor="let pmenu of header?.menus" class="nav-item" >
-        <a class="nav-link" [routerLink]="[pmenu.route]" *ngIf="pmenu.check(header?.user)">
-          <span *ngIf="pmenu.icon"><i [class]="pmenu.icon"></i></span>&nbsp;{{pmenu.title}}
-        </a>
+        <app-header-menu [menu]="pmenu" [badge]="pmenu.badge" *ngIf="pmenu.check | async "></app-header-menu>
       </li>
     </ul>
       
     <ul class="nav navbar-nav navbar-right">
       <li *ngFor="let amenu of header?.adminMenus" class="nav-item" >
-        <a class="nav-link" [routerLink]="[amenu.route]" *ngIf="amenu.check(header?.user)">
-          <span *ngIf="amenu.icon"><i [class]="amenu.icon"></i></span>&nbsp;{{amenu.title}}
-        </a>
+        <app-header-menu [menu]="amenu" [badge]="amenu.badge" *ngIf="amenu.check | async "></app-header-menu>
       </li>
       <li class="nav-item" *ngIf="header?.user" dropdown >
         <button id="button-basic" dropdownToggle type="button" class="btn pb-0 pt-1"
                 aria-controls="basic-link">
-          <span class="nav-link py-0">{{userName(header?.user)}} <i class="fas fa-cog"></i></span>
+          <div class="name py-0">{{userName(header?.user)}} <i class="fas fa-cog"></i></div>
         </button>
         <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu dropdown-menu-right"
             role="menu" aria-labelledby="basic-link">
-	      <li role="menuitem"><a class="dropdown-item"  href="#" [routerLink]="[header?.changePasswordURL]" >
-              <i class="fas fa-key"></i>&nbsp;&nbsp;{{passwordSubMenu}}</a></li>
-	      <li role="menuitem" *ngFor="let smenu of header?.settingMenus"><a class="dropdown-item"  href="#" [routerLink]="[smenu.route]" *ngIf="smenu.check(header?.user)">
-              <i [class]="smenu.icon"></i>&nbsp;&nbsp;{{smenu.title}}</a></li>
+	      <li role="menuitem">
+            <a class="dropdown-item"  href="#" [routerLink]="[header?.changePasswordURL]" >
+              <i class="fas fa-key"></i>&nbsp;&nbsp;{{passwordSubMenu}}</a>
+          </li>
+	      <li role="menuitem" *ngFor="let smenu of header?.settingMenus">
+            <a class="dropdown-item"  href="#" [routerLink]="[smenu.route]" *ngIf="smenu.check | async ">
+              <i [class]="smenu.icon"></i>&nbsp;&nbsp;{{smenu.title}}
+            </a>
+          </li>
           <li class="divider dropdown-divider"></li>
           <li role="menuitem"><a class="dropdown-item pl-5"  href="#" [routerLink]="[header?.logoutURL]">
             Logout&nbsp;&nbsp;&nbsp;<i class="fas fa-sign-out-alt"></i></a></li>
@@ -35,6 +37,17 @@
       </li>
     </ul>
   </div>
+  <mat-menu #menu="matMenu" class="barger-menu-items">
+    <div *ngFor="let amenu of header?.adminMenus">
+      <button mat-menu-item *ngIf="amenu.check | async " [routerLink]="[amenu.route]"><i [class]="amenu.icon"></i>&nbsp;&nbsp;{{amenu.title}}</button>
+    </div>
+    <HR class="my-0">
+    <div *ngFor="let smenu of header?.settingMenus">
+      <button mat-menu-item *ngIf="smenu.check | async " [routerLink]="[smenu.route]"><i [class]="smenu.icon"></i>&nbsp;&nbsp;{{smenu.title}}</button>
+    </div>
+    <HR class="my-0">
+    <button mat-menu-item [routerLink]="[header?.logoutURL]" class="menu-align">Logout&nbsp;&nbsp;&nbsp;<i class="fas fa-sign-out-alt"></i></button>
+  </mat-menu>
 </nav>
 
 

@@ -27,8 +27,10 @@
             "outputPath": "dist",
             "index": "src/index.html",
             "main": "src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
             "tsConfig": "src/tsconfig.app.json",
-            "polyfills": "src/polyfills.ts",
             "assets": [
                 "src/assets",
                 "src/app/app-modules/assets",
@@ -42,11 +44,12 @@
                 "./node_modules/ngx-spinner/animations/ball-running-dots.css",
                 "./node_modules/ngx-spinner/animations/ball-beat.css",
                 "src/assets/theme/bootstrap.min.css",
+                "src/theme.scss",
                 "src/styles.scss"
             ],
               "scripts": [
                   "./node_modules/@fortawesome/fontawesome-free/js/all.js",
-              "src/assets/javascripts/jquery.min.js",
+                  "src/assets/javascripts/jquery.min.js",
               "src/assets/javascripts/bootstrap.min.js",
               "src/assets/javascripts/popper.min.js",
               "src/assets/javascripts/Chart.js"
@@ -141,10 +144,13 @@
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
-          "options": {
+            "options": {
+             "polyfills": [
+                  "zone.js",
+                  "zone.js/testing"
+             ],
             "main": "src/test.ts",
             "karmaConfig": "./karma.conf.js",
-            "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.spec.json",
               "scripts":[
               "./node_modules/@fortawesome/fontawesome-free/js/all.js",
@@ -153,7 +159,8 @@
               "./node_modules/bootstrap/dist/css/bootstrap.min.css",
                 "./node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
                 "./node_modules/@fortawesome/fontawesome-free/css/all.css",
-              "src/styles.scss"
+                "src/theme.scss"
+                "src/styles.scss"
             ],
             "assets": [
               "src/assets",

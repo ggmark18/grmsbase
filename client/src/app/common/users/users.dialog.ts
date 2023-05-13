@@ -3,11 +3,10 @@ import { FormControl, Validators, UntypedFormBuilder, UntypedFormGroup } from '@
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA  } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 import { UsersService } from './service';
-import { ConfirmDialog } from '../dialog/confirm.dialog';
-import { DisplayMessage } from '../base/messages';
+import { ConfirmDialog } from '@grms/common/dialog/confirm.dialog';
+import { DisplayErrorMessage } from '@grms/common/errors/messages';
 import { AuthRole } from '@api-dto/common/auth/dto';
 import { User, UserServiceError } from '@api-dto/common/users/dto';
-
 
 import * as _ from 'lodash';
 
@@ -67,7 +66,7 @@ export class UsersDialog implements OnInit, OnDestroy {
                 if( error.error && error.error == UserServiceError.CONFLICT ) {
                     let field = this.userForm.get(error.message);
                     if( field ) {
-                        field.setErrors({ message: DisplayMessage.DuplicateKey});
+                        field.setErrors({ message: DisplayErrorMessage.DuplicateKey});
                     } else {
                         this.error = error.message;
                     }

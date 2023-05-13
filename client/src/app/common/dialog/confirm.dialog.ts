@@ -43,11 +43,10 @@ export class ConfirmDialog implements OnInit {
         if( config.icon ) {
             this.confirmIcon = config.icon;
         }
-        
         if( config.okButtonClass ) {
             this.okButtonClass = config.okButtonClass;
         }
-        if( !config.cancelButton ) {
+        if( config.cancelButton ) {
             this.cancelButton = config.cancelButton;
         }
         if( config.buttonTitle ) {

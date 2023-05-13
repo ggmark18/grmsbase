@@ -6,9 +6,9 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CookieModule } from 'ngx-cookie';
 import { AppMaterialModule } from '@grms/app.material';
-import { SocketService } from '@grms/common/base/socket.service';
+import { SocketService } from '@grms/common/socket/service';
 
-import { AppRootLayout } from '@grms/app-root.layout';
+import { AppRootLayout, adminCheck } from '@grms/app-root.layout';
 import { AuthModule } from '@grms/common/auth';
 import { UsersService } from '@grms/common/users/service';
 import { UsersComponent } from '@grms/common/users/users.component';
@@ -48,8 +48,7 @@ export function setupLayoutForUsers(layout: AppRootLayout, user: User) {
     layoutConfig.logoutURL = '/users/logout';
     layoutConfig.changePasswordURL = '/users/password';
     layoutConfig.logo = "assets/images/logo.png";
-    layoutConfig.addAdminMenu({name: 'Users', icon:'fas fa-users', title:'Users', route: 'users/users', order: 8,
-                          check:(user)=>{return user.role == AuthRole.ADMIN;}});
+    layoutConfig.addAdminMenu({name: 'Users', icon:'fas fa-users', title:'Users', route: 'users/users', order: 8, check: adminCheck(user)});
 }
 
 

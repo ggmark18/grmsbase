@@ -1,4 +1,13 @@
-<footer *ngIf="visible">
+<footer *ngIf="visible && layoutConfig$ | async as layout">
+  <div class="d-none d-lg-block py-3 banner-font">
   &copy; 2022 <a [routerLink]="['about']"><span style="color:#e75656;">GRMS</span>Base</a>&nbsp;&nbsp <span style="color:#FF0000">&hearts;</span> Powered by CLG
   &nbsp;&nbsp; Language: <a href="/en/">EN</a>/<a href="/ja/">JP</a>
+  </div>
+  <div class="d-lg-none">
+    <div class="row">
+      <div *ngFor="let bmenu of layout?.mobileButtons" class="nav-item" class="col" >
+        <app-header-menu [menu]="bmenu" [badge]="bmenu.badge"></app-header-menu>
+      </div>
+    </div>
+  </div>
 </footer>

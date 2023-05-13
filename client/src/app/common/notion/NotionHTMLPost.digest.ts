@@ -2,7 +2,7 @@ import { Component, Inject, Input, Output, OnInit, EventEmitter, ViewEncapsulati
 import { SafeHtml} from '@angular/platform-browser';
 import { HttpClient } from '@angular/common/http';
 
-import { NotionPost, NotionBlock, NotionPostDigest } from '@api-dto/common/notion/dto';
+import { NotionPost, NotionBlock, NotionPostDigest, NotionPostStatus, statusToNotion } from '@api-dto/common/notion/dto';
 import { NOTION_DIGEST_APIURL } from '.';
 import { NotionHTMLBase } from './NotionHTMLBase';
 import { NotionHTMLBlockFactory } from './NotionHTMLBlock.factory';
@@ -19,13 +19,14 @@ export class NotionHTMLPostDigest extends NotionHTMLBase {
         super.getDigest(this._post.blockid).subscribe( res => {
             this._digest = res;
             this._thumbnail = this.factory.createTrustedHTML(this._digest?.thumbnail);
-        });
+        })
     }
-    @Output() event = new EventEmitter<NotionPost>();
-        
-    _post?: NotionPost;
-    _digest: NotionPostDigest;
-    _thumbnail: SafeHtml;
+    @Input() status: boolean = false
+    @Output() event = new EventEmitter<NotionPost>()
+
+    _post?: NotionPost
+    _digest: NotionPostDigest
+    _thumbnail: SafeHtml
     constructor(protected http : HttpClient,
                 protected factory: NotionHTMLBlockFactory,
                 @Inject(NOTION_DIGEST_APIURL)
@@ -33,20 +34,24 @@ export class NotionHTMLPostDigest extends NotionHTMLBase {
                ) { super(http, apiurl); }
 
     readContinue() {
-        this.event.emit(this._post);
+        this.event.emit(this._post)
+    }
+
+    getNotionStatus( status: NotionPostStatus ): string {
+        return statusToNotion(status)
     }
 
     get paragraphContent() {
-        let text = "";
+        let text = ""
         if( this._digest?.paragraph?.context?.rich_text ) {
             for( let rtext of this._digest.paragraph.context.rich_text ) {
-                text += rtext?.text?.content;
+                text += rtext?.text?.content
             }
             if( text.length > 100 ) {
-                text = text.substring(0,100);
-                text += " ...";
+                text = text.substring(0,100)
+                text += " ..."
             }
-            return text;
+            return text
         }
     }
 }

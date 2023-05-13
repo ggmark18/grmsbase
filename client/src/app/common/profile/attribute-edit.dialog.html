@@ -1,17 +1,18 @@
-<mat-dialog>
-  <h3 mat-dialog-title>属性編集</h3>
+<mat-dialog class="mat-dialog-container">
+  <div class="modal-header">
+    <h3 mat-dialog-title>属性編集</h3>
+  </div>
   <form [formGroup]="attributeForms">
     <mat-dialog-content class="dialog-container">
-
-      <mat-form-field>
+      <mat-form-field appearance="outline">
         <input matInput placeholder="属性キー" formControlName="key" [readonly]="model" required>
       </mat-form-field>
-      <mat-form-field>
+      <mat-form-field appearance="outline">
         <input matInput placeholder="タイトル" formControlName="title" required>
       </mat-form-field>
       <div class="row">
         <div class="col">
-          <mat-form-field>
+          <mat-form-field appearance="outline">
             <input matInput placeholder="接頭語" formControlName="prefix" >
           </mat-form-field>
         </div>
@@ -21,7 +22,7 @@
       </div>
       <div class="row">
         <div class="col">
-          <mat-form-field>
+          <mat-form-field appearance="outline">
             <input matInput placeholder="接尾語" formControlName="postfix" >
           </mat-form-field>
         </div>
@@ -29,23 +30,21 @@
           <mat-checkbox formControlName="alwaysPostfix"></mat-checkbox>
         </div>
       </div>
-      <mat-form-field>
+      <mat-form-field appearance="outline">
         <mat-select placeholder="属性タイプ" formControlName="type">
           <mat-option *ngFor="let type of typeCandidate" [value]="type.value">
             {{type.title}}
           </mat-option>
         </mat-select>
       </mat-form-field>
-      
       <mat-checkbox  formControlName="show">一覧表示</mat-checkbox>
-
     </mat-dialog-content>
-    <mat-dialog-actions>
-      <div class="btn-group dialog-footer-button attribute-edit">
+    <mat-dialog-actions class="modal-footer">
+      <div class="btn-group attribute-edit">
         <div class="w-100">
-          <button class="btn btn-save" (click)="onSubmit()" [disabled]="attributeForms.invalid" ></button>
-          <button class="btn btn-cancel" matDialogClose></button>
-          <button class="btn btn-delete" (click)="onDelete()"  [mat-dialog-close]="model"></button>
+          <button mat-button class="btn btn-save" (click)="onSubmit()" [disabled]="attributeForms.invalid" ></button>
+          <button mat-button class="btn btn-cancel" mat-dialog-close></button>
+          <button mat-button class="btn btn-delete" (click)="onDelete()"  [mat-dialog-close]="model"></button>
         </div>
       </div>
     </mat-dialog-actions>

@@ -4,8 +4,8 @@ import { Router } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
 import jwt_decode from 'jwt-decode';
 import { map } from 'rxjs/operators';
-import { AppRootLayout } from '../../app-root.layout';
-import { SocketService } from '../base/socket.service';
+import { AppRootLayout } from '@grms/app-root.layout';
+import { SocketService } from '@grms/common/socket/service';
 import { AuthConfig } from './auth.config';
 import { AuthUser, AuthRole, AuthStatus, LoginInfo, Payload, DecodeInfo, ChangePassword } from '@api-dto/common/auth/dto';
 

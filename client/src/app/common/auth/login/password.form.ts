@@ -1,11 +1,9 @@
 import { Component, OnInit, OnDestroy, Inject } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { UntypedFormGroup, UntypedFormControl, Validators, UntypedFormBuilder, ValidationErrors } from '@angular/forms';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 import { AppRootLayout } from '@grms/app-root.layout';
 import { AuthServiceBase} from '../auth.service';
-import { ErrorDialog } from '@grms/common/dialog/error.dialog';
 
 function PasswordMatchValidator(control: UntypedFormControl): ValidationErrors {
     let password = control.root.get('password');
@@ -33,7 +31,6 @@ export class PasswordChangeForm implements OnInit, OnDestroy {
     constructor(protected layout: AppRootLayout, 
 		        protected formBuilder: UntypedFormBuilder,
                 protected route: ActivatedRoute,
-		        protected dialog: MatDialog,
 		        protected router: Router) {
         this.passwordForm = this.formBuilder.group({
 	        password: this.password,

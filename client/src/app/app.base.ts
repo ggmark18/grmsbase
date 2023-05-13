@@ -12,13 +12,14 @@ import { AppRoot } from './app-root.component';
 import { AppRootLayout } from './app-root.layout';
 import { AppMaterialModule } from './app.material';
 import { CommonDialogModule } from './common/dialog';
-import { CatchErrorInterceptor } from './common/base/http-error.interceptor';
+import { CommonErrorModule } from './common/errors';
 
 import { AboutComponent } from './common/aboutIMB/about.component';
 import { HeaderComponent } from './common/headerfooter/header.component';
+import { HeaderMenuComponent } from './common/headerfooter/menu.component';
 import { FooterComponent } from './common/headerfooter/footer.component';
 
-import { SocketService } from './common/base/socket.service';
+import { SocketService } from './common/socket/service';
 import { AppSharedModule } from './app.share';
 import { AppModules } from './app-modules/app.modules';
 
@@ -37,6 +38,7 @@ const routes: Routes = [
         AppMaterialModule,
         BsDropdownModule.forRoot(),
         CommonDialogModule,
+        CommonErrorModule,
         AppSharedModule,
         AppModules,
     ],
@@ -44,16 +46,12 @@ const routes: Routes = [
         AppRoot,
         AboutComponent,
         HeaderComponent,
+        HeaderMenuComponent,
         FooterComponent,
     ],
     providers: [
         SocketService,
         AppRootLayout,
-        { 
-            provide: HTTP_INTERCEPTORS,
-            useClass: CatchErrorInterceptor,
-            multi: true,
-        },
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     bootstrap: [AppRoot]

@@ -1,6 +1,7 @@
-import { Component, OnInit, OnDestroy, Inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
+
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { first } from 'rxjs/operators';
@@ -13,7 +14,7 @@ import { isAdmin } from '../auth/auth.service';
     templateUrl: './header.component.html',
     styleUrls: ['./headerfooter.component.scss']
 })
-export class HeaderComponent implements OnInit, OnDestroy {
+export class HeaderComponent {
     
     layoutConfig$: Observable<LayoutConfig>;
 
@@ -24,12 +25,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
         this.layoutConfig$ = this.layout.getLayoutConfig();
     }
     
-    ngOnInit() {
-    }
-    
-    ngOnDestroy() {
-    }
-
     isAdmin(user: AuthUser) {
         return isAdmin(user);
     }
@@ -40,6 +35,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
         displayName += user?.name;
         displayName += $localize` `;
         return displayName;
+    }
+    checkUser(menu) {
+        return true;
     }
 
     get passwordSubMenu() {

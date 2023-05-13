@@ -32,7 +32,7 @@ export class AttributeOrderDialog {
     editAttribute( attribute = null ) {
         this.childRef = this.dialog.open(AttributeEditDialog, {
             data: attribute,
-            width: '350px'
+            width: '370px'
         });
         this.childRef.afterClosed().subscribe((res) => {
             if( res?.function == CloseFunction.SAVE ) {

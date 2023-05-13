@@ -64,7 +64,7 @@
     min-width: 79px;
 }
 
-.mat-form-field {
+mat-form-field {
     width: 100%;
 }
 
@@ -80,7 +80,9 @@
         content: " Setting";
     }
 }
-
+.profile-attribute-new {
+    margin:0 !important;
+}
 .profile-page {
     padding-top: 20px;
     .main-col {

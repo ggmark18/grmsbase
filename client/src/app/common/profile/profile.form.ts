@@ -1,6 +1,5 @@
 import { Component, Inject, OnInit, Input } from '@angular/core';
 import { FormControl, Validators, FormBuilder, FormGroup } from '@angular/forms';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA  } from '@angular/material/dialog';
 
 import { ProfileFormat, ProfileType } from '@api-dto/common/profile/dto';
 

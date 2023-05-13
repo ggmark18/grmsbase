@@ -1,9 +1,9 @@
 import { HttpException, HttpStatus } from '@nestjs/common';
-import { sendmail } from '../tools/mailtool';
-import  config  from '../../config.base';
+import  config  from '@grms/config.base';
+import { sendmail } from '@grms/common/tools/mailtool';
 import { dev_template, prd_template, ope_template, STYLESHEET } from './error_page';
 
-export class IMBaseError extends HttpException {
+export class GRMSBaseError extends HttpException {
     type: string;
     notice : boolean;
     userinfo : string;
@@ -11,14 +11,14 @@ export class IMBaseError extends HttpException {
     html : string;
     constructor( message: string, notice: boolean, userinfo ) {
         super(message, HttpStatus.INTERNAL_SERVER_ERROR);
-        this.type = 'IMBaseError';
+        this.type = 'GRMSBaseError';
         this.notice = notice;
         this.userinfo = userinfo;
         this.serial = makeDateSerial();
     }
 }
 
-export class InternalError extends IMBaseError {
+export class InternalError extends GRMSBaseError {
     constructor(message, userinfo=null) {
         super( message, true, userinfo);
         this.type = 'InternalError';
@@ -31,7 +31,7 @@ export class InternalError extends IMBaseError {
     }
 }
 
-export class OperationError extends IMBaseError {
+export class OperationError extends GRMSBaseError {
     title : String;
     constructor(title, message, userinfo=null) {
         super( message, true, userinfo);
@@ -41,7 +41,7 @@ export class OperationError extends IMBaseError {
     }
 }
 
-export class ClientError extends IMBaseError {
+export class ClientError extends GRMSBaseError {
     constructor(url, userid=null) {
         super( "", false, userid);
         this.userinfo = userid;
@@ -51,35 +51,12 @@ export class ClientError extends IMBaseError {
 
 var accepts = require('accepts')
 var escapeHtml = require('escape-html')
-var fs = require('fs')
-var path = require('path')
+
 var util = require('util')
 
 var DOUBLE_SPACE_REGEXP = /\x20{2}/g
 var NEW_LINE_REGEXP = /\n/g
 var inspect = util.inspect
-var toString = Object.prototype.toString
-
-/* istanbul ignore next */
-var defer = typeof setImmediate === 'function'
-  ? setImmediate
-  : function (fn) { process.nextTick(fn.bind.apply(fn, arguments)) }
-
-export function pageNotFound(req, res) {
-    var viewFilePath = '404';
-    var statusCode = 404;
-    var result = {
-        status: statusCode
-    };
-
-    res.status(result.status);
-    res.render(viewFilePath, {}, function(err, html) {
-        if(err) {
-            return res.status(result.status).json(result);
-        }
-        res.send(html);
-    });
-};
 
 export function errorNotice(e) {
     if( e.notice ) {
@@ -94,7 +71,7 @@ export function errorNotice(e) {
             subject: `${config().mail.subjectPrefix} エラー報告[SN:${e.serial}]`,
             text: message
         };
-        sendmail(config().mail.smtp, mail);
+        sendmail(config().mail, mail);
     }
 }
 
@@ -108,7 +85,7 @@ export function errorHandler (opts = {}) {
     var TEMPLATE = (debug) ? dev_template : prd_template;
 
     return function errorHandler (err, req, res, next) {
-        if( err instanceof IMBaseError ) {
+        if( err instanceof GRMSBaseError ) {
             if(debug) {
                 console.log(err);
             } else {

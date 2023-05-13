@@ -9,7 +9,7 @@ export class Video implements NotionBlockProvider {
     
     createHTML(block: NotionBlock, factory: NotionHTMLBlockFactory) : string {
         let url = this.replaceToSafeURL(block.context.external.url);
-        let html = `<div class="video"><iframe width="56" height="32" src="${url}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>`;
+        let html = `<div class="video_wrap"><div class="video"><iframe width="100%" height="100%" src="${url}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>`;
         return html;
     }
 

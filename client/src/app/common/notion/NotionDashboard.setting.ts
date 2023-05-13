@@ -1,6 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core'
 import { FormControl, Validators, FormBuilder, FormGroup, FormArray } from '@angular/forms'
-import { MatDialog, MatDialogRef } from '@angular/material/dialog'
 import { Observable } from 'rxjs'
 import { NgxSpinnerService } from "ngx-spinner"
 
@@ -30,8 +29,7 @@ export class NotionDashboardSetting {
     notionService: NotionServiceBase
 
     constructor(private fb: FormBuilder,
-                private spinner: NgxSpinnerService,
-                private dialog: MatDialog) {
+                private spinner: NgxSpinnerService) {
         this.notionForm = this.fb.group({
             _id: [''],
             title: [''],

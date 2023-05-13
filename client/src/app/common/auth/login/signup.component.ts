@@ -8,7 +8,6 @@ import { map, switchMap } from 'rxjs/operators';
 import { AuthServiceBase} from '../auth.service';
 import { AuthType, AuthStatus, LoginError } from '@api-dto/common/auth/dto';
 import { ConfirmDialog } from '@grms/common/dialog/confirm.dialog';
-import { ErrorDialog } from '@grms/common/dialog/error.dialog';
 
 import { PasswordChangeForm } from './password.form';
 

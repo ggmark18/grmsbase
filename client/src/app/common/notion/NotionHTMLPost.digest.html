@@ -1,6 +1,12 @@
 <mat-card class="container digest-card">
+  <div class="status" *ngIf="status">
+    <div class="status-icon" style="background-color:{{statusColor(_post)}}"> {{getNotionStatus(_post.status)}}</div>
+  </div>
+  <div class="status" *ngIf="!status">
+    <div class="status-icon" style="background-color:red" *ngIf="_digest?.unread"><B>新着</B></div>
+  </div>
   <div class="row">
-    <div class="col-lg-5">
+    <div class="col-lg-5 pr-0">
       <div class="thumbnail-div">
         <div [innerHTML]="_thumbnail"></div>
       </div>

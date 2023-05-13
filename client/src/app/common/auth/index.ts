@@ -17,6 +17,7 @@ import { LoginComponentBase } from './login/login.component';
 import { PasswordComponentBase } from './login/password.component';
 import { PasswordChangeForm } from './login/password.form';
 import { SignupComponentBase } from './login/signup.component';
+import { SecurePipe } from './header.interceptor';
 
 @NgModule({
     imports: [
@@ -27,13 +28,15 @@ import { SignupComponentBase } from './login/signup.component';
         LoginComponentBase,
         SignupComponentBase,
         PasswordComponentBase,
-        PasswordChangeForm
+        PasswordChangeForm,
+        SecurePipe
     ],
     exports: [
         LoginComponentBase,
         SignupComponentBase,
         PasswordComponentBase,
-        PasswordChangeForm
+        PasswordChangeForm,
+        SecurePipe
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

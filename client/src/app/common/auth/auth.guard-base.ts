@@ -15,12 +15,11 @@ export class AuthGuardBase implements CanActivate {
     constructor(protected layout: AppRootLayout, 
                 protected router: Router) {}
 
-    canActivate() {
+    async canActivate() {
         let login = this.authService?.isLoggedIn();
         if( !login && this.authService?.hasToken() ) {
-            this.authService?.syncMe().then( () => {
-                this.setupLayout().then( () => this.layout.subscribeLayoutConfig() );
-            });
+            await this.authService?.syncMe();
+            this.setupLayout().then( () => this.layout.subscribeLayoutConfig() );
             return true;
         }
         if( login ) {

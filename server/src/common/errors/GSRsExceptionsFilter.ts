@@ -2,21 +2,26 @@ import { ExceptionFilter, Catch, ArgumentsHost, HttpException, HttpStatus } from
 import { HttpAdapterHost } from '@nestjs/core';
 import { BaseExceptionFilter } from '@nestjs/core';
 import { Request, Response } from 'express';
-import { IMBaseError } from '.';
+
+import  config  from '@grms/config.base';
+import { GRMSBaseError, errorNotice } from '.';
 
 @Catch()
 export class GSRsExceptionsFilter extends BaseExceptionFilter {
     catch(exception: unknown, host: ArgumentsHost) {
-        console.log(exception);
-        if( exception instanceof IMBaseError ) {
-            const ctx = host.switchToHttp();
-            const response = ctx.getResponse<Response>();
-            const request = ctx.getRequest<Request>();
+        if( exception instanceof GRMSBaseError ) {
+            if(config().devmode) {
+                console.log('GRMSBaseError', exception)
+            } else {
+                errorNotice(exception)
+            }
+            const ctx = host.switchToHttp()
+            const response = ctx.getResponse<Response>()
+            const request = ctx.getRequest<Request>()
             const httpStatus =
                 exception instanceof HttpException
                 ? exception.getStatus()
-                : HttpStatus.INTERNAL_SERVER_ERROR;
-            
+                : HttpStatus.INTERNAL_SERVER_ERROR
             response.status(httpStatus)
                 .json({
                     statusCode: httpStatus,
@@ -25,7 +30,8 @@ export class GSRsExceptionsFilter extends BaseExceptionFilter {
                     type: exception.type,
                     notice: exception.notice,
                     userinfo: exception.userinfo,
-                    serial: exception.serial
+                    serial: exception.serial,
+                    html: exception.html
                 });
         } else {
             super.catch(exception, host);

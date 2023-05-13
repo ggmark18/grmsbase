@@ -1,12 +1,54 @@
 <div class="post-detail">
-  <H2>{{_post?.title}}</H2>
+  <div class="row">
+    <div class="col">
+      <H2>{{_post?.post.title}}</H2>
+    </div>
+    <div class="col status" *ngIf="status">
+      <span style="background-color:{{statusColor(_post?.post)}}"> {{getNotionStatus(_post?.post.status)}}</span>
+    </div>
   <div class="row">
     <div class="col text-start">
-      <div class="date"><i class="far fa-clock"></i>&nbsp;{{_post.updatedAt | date:'yyyy年MM月dd日 HH:mm'}}</div>
+      <div class="date"><i class="far fa-clock"></i>&nbsp;{{_post?.post.updatedAt | date:'yyyy年MM月dd日 HH:mm'}}</div>
     </div>
-    <div class="col writer">{{_post.writer}}</div>
+    <div class="col writer">{{_post?.writerName()}}</div>
   <P>
   <div *ngFor="let block of _blocks">
     <notion-block [block]="block"></notion-block>
+  </div>
+  <div *ngIf="reputation">
+    <div class="float-left">
+      <div *ngFor="let type of reputationTypes">
+        <div *ngIf="type.reputators.length > 0" class="reputation" [matTooltip]="list(type.reputators,10)" matTooltipClass="multiline-tooltip">
+          {{type.label}}&nbsp;&nbsp;{{type.reputators.length}}
+        </div>
+      </div>
+    </div>
+    <mat-button-toggle-group name="reputationToggle" class="reputation-types" [(ngModel)]="reputation.reputation" (change)="setReputation($event)">
+      <mat-button-toggle [matTooltip]="reputation.explain" *ngFor="let reputation of reputationTypes" [value]="reputation.value">{{reputation.label}}</mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+  <div *ngIf="status" class="status-form mt-2">
+    <form [formGroup]="statusForm">
+      <div class="pr-3">
+        <div class="float-right mx-2" [matTooltip]="disabled" [matTooltipDisabled]="disabled == null">
+          <button mat-stroked-button color="primary" (click)="updateStatus()" class="updateStatus" [disabled]="!statusForm.valid || disabled != null"> 更新</button>
+        </div>
+        <div class="float-right mx-2">
+          <mat-form-field appearance="outline" class="statusField">
+            <mat-select formControlName="status">
+              <mat-option *ngFor="let status of statuses" [value]="status.value">{{status.label}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="float-right mx-2">
+          <mat-form-field appearance="outline">
+            <input matInput formControlName="postDate" [matDatepicker]="picker" placeholder="公開日">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+          <mat-error *ngIf="statusForm.get('postDate').hasError('needPostDate')">公開日を設定してください。</mat-error>
+        </div>
+      </div>
+    </form>
   </div>
 </div>

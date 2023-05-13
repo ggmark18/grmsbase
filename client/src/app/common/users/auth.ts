@@ -3,7 +3,7 @@ import { Location } from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
 import { HttpClient, HttpEvent, HttpInterceptor, HttpHandler, HttpRequest} from '@angular/common/http';
 import { UntypedFormBuilder } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
+import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
 import { Observable } from 'rxjs';
 
 import { AuthServiceBase } from '@grms/common/auth/auth.service';
@@ -12,7 +12,7 @@ import { AuthGuardBase } from '@grms/common/auth/auth.guard-base';
 import { AuthHeaderInterceptorBase } from '@grms/common/auth/header.interceptor';
 import { LoginComponentBase, HeaderParts } from '@grms/common/auth/login/login.component';
 import { PasswordComponentBase } from '@grms/common/auth';
-import { SocketService } from '@grms/common/base/socket.service';
+import { SocketService } from '@grms/common/socket/service';
 import { AppRootLayout } from '@grms/app-root.layout';
 import { AuthRole } from '@api-dto/common/auth/dto';
 import { User } from '@api-dto/common/users/dto';
@@ -89,9 +89,14 @@ export class AuthGuardAdminUsers extends AuthGuardUsers {
         super(auth, layout, router);
     }
     
-    canActivate() {
-        let user = this.auth.getUser();
-	    return super.canActivate() && (user && user.role == AuthRole.ADMIN ); 
+    async canActivate() {
+        let login = await super.canActivate()
+        if ( login ) {
+ 	        const user = this.auth.getUser();
+            return (user.role == AuthRole.ADMIN)
+        } else {
+            return false;
+        }
     }
 }
 

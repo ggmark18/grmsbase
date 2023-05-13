@@ -1,18 +1,37 @@
-import { Title } from "@angular/platform-browser";
-import { Injectable, Inject } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
-import { Observable, Subject } from 'rxjs';
-import * as _ from 'lodash';
+import { Title } from "@angular/platform-browser"
+import { Injectable, Inject } from '@angular/core'
+import { DOCUMENT } from '@angular/common'
+import { Observable, Subject } from 'rxjs'
+import * as _ from 'lodash'
 
-import { AuthUser } from '../api-dto/common/auth/dto';
+import { AuthUser, AuthRole } from '../api-dto/common/auth/dto'
 
-interface MenuItem {
+export declare const enum MenuType {
+    TOP,
+    BOTTOM,
+    BOTH
+}
+
+export function noCheck(): Promise<boolean> {
+    return new Promise((resolve, reject) => {
+        resolve(true)
+    })
+}
+export function adminCheck(user: AuthUser): Promise<boolean> {
+    return new Promise((resolve, reject) => {
+        resolve(user.role === AuthRole.ADMIN)
+    })
+}
+
+export interface MenuItem {
     name: string
     icon: string
     title: string
-    route: string
+    route?: string
     order: number
     check: any
+    badge?: { send:string, recieve:string, data: any, trigger?: string }
+    list?: any
 }
 
 export class LayoutConfig {
@@ -28,6 +47,7 @@ export class LayoutConfig {
     menus = [];
     adminMenus = [];
     settingMenus = [];
+    mobileButtons = [];
 
     addMenu( menu: MenuItem ) {
         this.menus.push(menu);
@@ -37,6 +57,9 @@ export class LayoutConfig {
     }
     addSettingMenu( menu: MenuItem ) {
         this.settingMenus.push(menu);
+    }
+    addButtons( menu: MenuItem ) {
+        this.mobileButtons.push(menu);
     }
 }
 

@@ -1,0 +1,8 @@
+<div *ngIf="!files.length" appDrag (files)="filesDropped($event)" >
+  <div>&nbsp;</div>
+  <img [src]="config?.getApiPath | secure | async " [style]="imageStyle"/>
+  <div class="align-center">Drop your new file here!</div>
+</div>
+<div *ngFor="let file of files">
+  <img *ngIf="file" [src]="file.url" [style]="imageStyle">
+</div>

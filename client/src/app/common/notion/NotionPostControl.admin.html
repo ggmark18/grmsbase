@@ -1,0 +1,39 @@
+<div class="container profile-page">
+<form [formGroup]="controlForm">
+  <mat-form-field appearance="outline">
+    <mat-label>記事集タイトル</mat-label>
+    <input matInput placeholder="記事集タイトル" formControlName="title" required>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>投稿者呼称追加情報</mat-label>
+    <mat-select formControlName="writerProfile">
+      <mat-option *ngFor="let profile of profileCandidates" [value]="profile.key">{{profile.title}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <div class="row">
+    <div class="col">
+      <mat-form-field appearance="outline">
+        <mat-label>承認タイプ</mat-label>
+        <mat-select placeholder="承認タイプ" formControlName="approveType">
+          <mat-option *ngFor="let type of types" [value]="type.value">
+            {{type.label}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="col number-col">
+      <mat-form-field appearance="outline">
+        <mat-label>承認者数</mat-label>
+        <input matInput placeholder="承認者数" formControlName="numberOfApprover" >
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="footer">
+    <button class="btn btn-save btn-sm mr-0" (click)="saveSubmit()" [disabled]="controlForm.invalid" ></button>
+    <button *ngIf="deletable" class="btn btn-delete btn-sm" (click)="deleteGroup()"></button>
+    <button class="btn btn-cancel btn-sm mr-3" (click)="cancel()"></button>
+  </div>
+</form>
+</div>
+
+

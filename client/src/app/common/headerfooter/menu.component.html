@@ -1,0 +1,17 @@
+<button mat-button [matBadge]="badgeCount" matBadgePosition="above before" matBadgeSize="small" matBadgeColor="warn" [matBadgeHidden]="badgeHidden"
+        class="badge-nav-link" [routerLink]="[_menu.route]" *ngIf="!_menu.list">
+  <span *ngIf="_menu.icon"><i [class]="_menu.icon"></i></span>&nbsp;{{_menu.title}}
+</button>
+<div *ngIf="_menu.list">
+  <div class="btn-group" dropdown>
+    <button mat-button class="badge-nav-link dropdown-toggle" dropdownToggle id="navbarDropdown" aria-controls="dropdownItems" aria-expanded="false" data-bs-toggle="dropdown">
+      <span *ngIf="_menu.icon"><i [class]="_menu.icon"></i></span>&nbsp;{{_menu.title}}
+    </button>
+    <ul role="menu" id="dropdownItems" class="dropdown-menu" *dropdownMenu aria-labelledby="navbarDropdown">
+      <li role="menuitem" *ngFor="let smenu of _menu.list">
+        <a class="dropdown-item"  href="#" [routerLink]="[smenu.route]"><i [class]="smenu.icon"></i>&nbsp;&nbsp;{{smenu.title}}</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
